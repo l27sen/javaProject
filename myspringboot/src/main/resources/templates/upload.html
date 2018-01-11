@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Script Call Tool</h2>
+
+<form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+    script List:
+    <br/>
+    <select name="script">
+        <option value="showContent.sh">showFileContent</option>
+        <option value="showLineNum.sh">showFileLineNum</option>
+    </select>
+    <br/>
+    Param: <input type="text" name="param"/><br/><br/>
+    <input type="file" name="inputFile"/><br/><br/>
+     <input type="submit" value="Submit" id="btnSubmit"/>
+</form>
+
+<h2>Script called Result:</h2>
+<pre>
+    <span id="result"></span>
+</pre>
+
+<script type="text/javascript"
+        src="webjars/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

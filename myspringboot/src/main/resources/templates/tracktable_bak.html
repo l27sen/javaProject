@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>fun tracker</title>
+</head>
+<body>
+<table id='example-table'>
+    <tr>
+        <th>Fund Tracker ID</th>
+        <th>Fund Name</th>
+        <th>Agent Tracker ID</th>
+        <th>Agent Name</th>
+        <th>Level</th>
+        <th>Fund Type</th>
+        <th>Recourse</th>
+        <th>Fund IG</th>
+        <th>Bloomberg ID</th>
+        <th>NAV Date</th>
+        <th>NAV</th>
+        <th>NAV Currency</th>
+        <th>FACT1</th>
+        <th>FACT2</th>
+        <th>Final IG</th>
+    </tr>
+    <tr>
+        <td>FTA024258</td>
+        <td>BlueBay High Yield Bond Fund</td>
+        <td>ATA000096</td>
+        <td>BlueBay Asset Management as Agent</td>
+        <td>1</td>
+        <td>UCITS</td>
+        <td>Fund</td>
+        <td>90</td>
+        <td>BBG000P6XXV5</td>
+        <td>03/31/2016</td>
+        <td>675,560,100</td>
+        <td>EUR</td>
+        <td>1234</td>
+        <td>5678</td>
+        <td>90.0</td>
+    </tr>
+    <tr>
+        <td>FTA024259</td>
+        <td>BlueBay High Yield Corporate Bond Fund</td>
+        <td>ATA000096</td>
+        <td>BlueBay Asset Management as Agent</td>
+        <td>1</td>
+        <td>UCITS</td>
+        <td>Fund</td>
+        <td>90</td>
+        <td>BBG000QCRGK7</td>
+        <td>03/31/2016</td>
+        <td>258,876,700</td>
+        <td>EUR</td>
+        <td>1234</td>
+        <td>5678</td>
+        <td>92.0</td>
+    </tr>
+</table>
+<button class="btn btn-primary" id="convert-table">Convert!</button>
+<button class="btn btn-primary" id="generate-table">Generate!</button>
+
+</body>
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+ <script src="js/jquery.tabletojson.min.js"></script>
+
+<script>
+    $('#convert-table').click( function() {
+        var table = $('#example-table').tableToJSON(); // Convert the table into a javascript object
+        console.log(table);
+        alert(JSON.stringify(table));
+    });
+
+
+    var titles = new Array();
+    titles[0] = "Fund ID";
+    titles[1] = "Bloomberg ID";
+    titles[2] = "NAV";
+
+    titles[3] = "Regulatory_Consideration";
+    titles[4] = "Redemption_Risk";
+    titles[5] = "IO_IC";
+    titles[6] = "LT_PL";
+    titles[7] = "Weighted_Score";
+    titles[8] = "Model IG";
+    var totalSub = 0;
+    $('#generate-table').click( function() {
+        $.ajax({
+            type: 'GET',
+            url:  "/script/json" ,
+            dataType: 'json',
+            success: function (data) {
+
+
+                for (var titleName in titles)
+                {
+
+                    for( var index in data[titles[titleName]] ){
+                        //alert(data[titles[titleName]][index]);
+                    }
+                }
+
+                var trHTML = '<table><tr>';
+
+                //generate title
+                for (var titleName in titles)
+                {
+                    trHTML += '<th>'+ titles[titleName]+'</th>'
+                }
+                trHTML+='</tr>';
+
+                //get the length of each subElement
+
+
+                for (var index in data[titles[0]]) {
+                    alert(index)
+                    totalSub++;
+                }
+
+                //generate content.
+
+                for (var index in data[titles[0]])
+                {
+                    trHTML+='<tr>';
+                    for( var titleName in titles){
+                        trHTML += '<td>'+ data[titles[titleName]][index]+'</td>'
+                    }
+                    trHTML+='</tr>';
+                }
+
+
+
+                trHTML+= '</table>'
+
+                $('#example-table').html(trHTML);
+
+//                var oldtable = document.getElementById("example-table");
+//                oldtable.style.visibility = 'hidden';
+             }
+        });
+    });
+
+</script>
+</html>

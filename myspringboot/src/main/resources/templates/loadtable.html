@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>fun tracker</title>
+    <script type="text/javascript">
+
+
+        var pageTitles = new Array();
+        pageTitles[0] = "Fund Tracker ID";
+        pageTitles[1] = "Fund Name";
+        pageTitles[2] = "Agent Tracker ID";
+        pageTitles[3] = "Agent Name";
+        pageTitles[4] = "Level";
+        pageTitles[5] = "Fund Type";
+        pageTitles[6] = "Recourse";
+        pageTitles[7] = "Fund IG";
+        pageTitles[8] = "Bloomberg ID";
+        pageTitles[9] = "NAV Date";
+        pageTitles[10] = "NAV";
+        pageTitles[11] = "NAV Currency";
+        pageTitles[12] = "FACT1";
+        pageTitles[13] = "FACT2";
+        pageTitles[14] = "Final IG";
+        function codeAddress() {
+
+            $.ajax({
+                type: 'GET',
+                url:  "/loadData" ,
+                dataType: 'json',
+                success: function (data) {
+                    var trHTML = '<table><tr>';
+                    //generate title
+                    for (var titleName in pageTitles)
+                    {
+                        trHTML += '<th>'+ pageTitles[titleName]+'</th>'
+                    }
+                    trHTML+='</tr>';
+                    //generate content.
+                    for (var index in data)
+                    {
+                        trHTML+='<tr>';
+                        for( var titleName in pageTitles){
+                            trHTML += '<td>'+ data[index][pageTitles[titleName]]+'</td>'
+                        }
+                        trHTML+='</tr>';
+                    }
+
+                    trHTML+= '</table>'
+                    $('#load-table').html(trHTML);
+
+//                var oldtable = document.getElementById("example-table");
+//                oldtable.style.visibility = 'hidden';
+                }
+            });
+
+
+
+        }
+        window.onload = codeAddress;
+    </script>
+</head>
+<body>
+<h3 id="test">load table dynamic1</h3>
+
+<table id='load-table'> </table>
+
+<button class="btn btn-primary" id="convert-table">Convert!</button>
+<button class="btn btn-primary" id="generate-table">Generate!</button>
+
+</body>
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.tabletojson.min.js"></script>
+
+<script>
+    $('#convert-table').click( function() {
+        var table = $('#load-table').tableToJSON(); // Convert the table into a javascript object
+        console.log(table);
+        alert(JSON.stringify(table));
+    });
+
+    //response table title.
+    var titles = new Array();
+    titles[0] = "Fund ID";
+    titles[1] = "Bloomberg ID";
+    titles[2] = "NAV";
+    titles[3] = "Regulatory_Consideration";
+    titles[4] = "Redemption_Risk";
+    titles[5] = "IO_IC";
+    titles[6] = "LT_PL";
+    titles[7] = "Weighted_Score";
+    titles[8] = "Model IG";
+    $('#generate-table').click( function() {
+
+        var table = $('#load-table').tableToJSON(); // Convert the table into a javascript object
+        console.log(table);
+        var json_req = (JSON.stringify(table));
+        var modelId = '123';
+        $.ajax({
+            type: 'POST',
+            data: json_req,
+            url:  "http://localhost:8090/script/json?model="+modelId ,
+            dataType: 'json',
+            success: function (data) {
+
+                var trHTML = '<table><tr>';
+
+                //generate title
+                for (var titleName in titles)
+                {
+                    trHTML += '<th>'+ titles[titleName]+'</th>'
+                }
+                trHTML+='</tr>';
+
+                //get the length of each subElement
+
+                //generate content.
+
+                for (var index in data[titles[0]])
+                {
+                    trHTML+='<tr>';
+                    for( var titleName in titles){
+                        trHTML += '<td>'+ data[titles[titleName]][index]+'</td>'
+                    }
+                    trHTML+='</tr>';
+                }
+
+
+
+                trHTML+= '</table>'
+
+                $('#load-table').html(trHTML);
+
+//                var oldtable = document.getElementById("example-table");
+//                oldtable.style.visibility = 'hidden';
+             }
+        });
+    });
+
+</script>
+</html>

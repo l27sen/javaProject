@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>tt</title>
+</head>
+<body>
+<table id='example-table'>
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th data-override="Score">Points</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td data-override="disqualified">50</td></tr>
+    <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td></tr>
+    <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>80</td></tr>
+    <tr>
+        <td>Adam</td>
+        <td>Johnson</td>
+        <td>67</td></tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" id="convert-table">Convert!</button>
+<button class="btn btn-primary" id="generate-table">Generate!</button>
+<h2>table called Result:</h2>
+<pre>
+    <span id="result"></span>
+</pre>
+</body>
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+ <script src="js/jquery.tabletojson.min.js"></script>
+
+<script>
+    $('#convert-table').click( function() {
+        var table = $('#example-table').tableToJSON(); // Convert the table into a javascript object
+        console.log(table);
+        alert(JSON.stringify(table));
+    });
+
+
+    $('#generate-table').click( function() {
+        $.ajax({
+            type: 'GET',
+            url:  "/script/json" ,
+            dataType: 'json',
+            success: function (data) {
+                alert(data[0]['First Name']);
+
+                var trHTML = '<table>';
+                for (var i in data)
+                {
+                    trHTML += '<tr><td><strong>' + data[i]['First Name']
+                            + '</strong></td><td><span class="label label-success">'
+                            + data[i]['Last Name'] + '</span></td><td>' + data[i]['Score'] + '</td></tr>';
+                }
+                trHTML += '</table>';
+
+                $('#example-table').html(trHTML);
+
+//                var oldtable = document.getElementById("example-table");
+//                oldtable.style.visibility = 'hidden';
+             }
+        });
+    });
+
+</script>
+</html>
