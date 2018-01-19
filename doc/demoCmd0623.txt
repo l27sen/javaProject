@@ -1,0 +1,209 @@
+
+1. CMD example:
+producer/consumer, must start zoopkeeper
+sudo service zookeeper start
+sudo service kafka-server status
+sudo service schema-registry status
+
+a. send msg
+kafka-console-producer --broker-list broker1:9092 \
+--topic hello_world_topic 
+
+b. consumer get msg
+kafka-console-consumer \ --bootstrap-server http://cs-media-kafka.test.expedia.com:80 \ --new-consumer \
+--from-beginning \
+--topic two-p-topic \
+
+
+./bin/kafka-console-consumer --zookeeper cs-media-zookeeper.test.expedia.com:80 --bootstrap-server http://cs-media-kafka.test.expedia.com:80 --from-beginning --topic two-p-topic  
+
+
+2. cerate a topic with two partition, consumer always read from one partition
+see producer and consumer result, if one is down, another read msg from that partition.
+
+a. create
+kafka-topics --zookeeper 10.2.88.105:2181 --create  --topic  world_topic \
+--partitions 2 --replication-factor 1
+
+b. describle 
+./kafka-topics --describe --zookeeper 10.2.88.105:2181 --topic  world_topic
+
+3. consumer group,, java example.
+HelloConsumer and HelloConsumer2.java
+
+
+4. AVRO schema
+
+5. connector cmd example. source file and sink file.
+/Users/seli/Downloads/Applications/confluent-2.1.0-alpha1 
+
+
+6. stream:
+https://raw.githubusercontent.com/confluentinc/examples/master/kafka-streams/src/main/java/io/confluent/examples/streams/PageViewRegionExample.java
+
+/Users/seli/Downloads/Applications/confluent-2.1.0-alpha1
+    private static final String KAFKA_SERVER = "10.2.88.105:9092";
+
+    private static final String SCHEMA_SERVER = "http://10.2.88.105:8081";
+
+nohup ./bin/zookeeper-server-start ./etc/kafka/zookeeper.properties &
+nohup ./bin/kafka-server-start ./etc/kafka/server.properties &
+./bin/connect-distributed ./etc/test/worker.test.properties
+nohup  ./bin/connect-distributed ./etc/schema-registry/connect-avro-distributed.properties &
+nohup ./bin/schema-registry-start ./etc/schema-registry/schema-registry.properties &
+
+
+nohup  /usr/bin/connect-distributed /etc/schema-registry/connect-avro-distributed.properties >/tmp/connect.log &
+
+
+nohup /usr/bin/kafka-server-start ./etc/kafka/server.properties &
+
+//list topic
+./bin/kafka-topics --zookeeper localhost:2181 --list
+./bin/kafka-topics --zookeeper cs-media-zookeeper.test.expedia.com:80 --list
+
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --list
+
+
+streamsConfiguration.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
+
+select * from changetable(changes Media, null) media
+
+select top 10 *  from Media 
+
+update media set MediaCommentTxt ='tedd3' where mediaid = 341
+
+
+0820  
+read message from topic
+./bin/kafka-avro-console-consumer --topic image-message-dev33 \
+             --zookeeper localhost:2181 \
+             --from-beginning
+             
+             
+             ./bin/kafka-avro-console-consumer --topic my-test-topic \
+             --zookeeper cs-media-zookeeper.test.expedia.com:80 \
+             --from-beginning
+             
+             
+             ./bin/kafka-avro-console-consumer --topic my-test-topic \
+             --zookeeper 10.2.88.79:2181 \
+             --from-beginning
+             
+             ./bin/kafka-console-producer --broker-list 10.2.88.79:9092 --topic my-test-topic
+             
+             
+             
+             ./bin/kafka-console-consumer  --bootstrap-server 10.2.88.79:9092  --new-consumer --from-beginning --topic my-test-topic 
+
+stream topic create:  ./bin/kafka-topics --zookeeper localhost:2181 --create  --topic TextLinesTopic --partitions 2 --replication-factor 1
+bin/kafka-topics --create --topic WordsWithCountsTopic --zookeeper localhost:2181 --partitions 1 --replication-factor 1
+
+write to topic:
+ ./bin/kafka-console-producer --broker-list localhost:9092 --topic TextLinesTopic
+ 
+ ./bin/kafka-console-consumer --topic WordsWithCountsTopic --from-beginning --zookeeper localhost:2181  --property print.key=true --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+                               
+ 
+show current schema 
+curl -X GET http://localhost:8081/subjects/imageTestTopic11-value/versions/1
+curl -X GET http://localhost:8081/subjects 
+curl -X GET http://10.2.88.79:8081/subjects/imageLCMTestTopic_04-value/versions/1
+
+curl -X GET http://10.2.88.11:8081/subjects/
+
+
+./bin/kafka-avro-console-producer  --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80 \
+             --broker-list 10.2.88.11:9092 --topic testSchema \
+             --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+             
+./bin/kafka-avro-console-consumer --topic testSchema \
+            --zookeeper 10.2.88.11:2181 \
+             --from-beginning
+
+
+./bin/kafka-avro-console-producer  --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80 \
+             --broker-list 10.2.89.52:9092 --topic testSchema2 \
+             --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+             
+./bin/kafka-avro-console-consumer --topic testSchema \
+            --zookeeper cs-media-zookeeper.test.expedia.com:80 \
+             --from-beginning
+
+curl -X GET http://cs-media-schemaregistry.test.expedia.com:80/subjects/
+
+curl -X GET http://cs-confluent-platform-schema-registry.test.expedia.com/subjects/
+curl -X GET http://localhost:8081/subjects/imageTestTopic11-value/versions/1
+
+curl -X GET http://localhost:8081/subjects/image-message-dev1-value/versions/1
+
+curl -X GET  http://localhost:8081/subjects/image-derivatives-dev-unit-key/versions
+
+curl -X GET http://localhost:8081/schemas/ids/22  (this is topic11
+
+curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"ImageMessage\",\"namespace\":\"io.confluent.examples.producer.model\",\"fields\":[{\"name\":\"active\",\"type\":[\"string\",\"null\"]},{\"name\":\"hidden\",\"type\":[\"string\",\"null\"]},{\"name\":\"clientId\",\"type\":[\"string\",\"null\"]},{\"name\":\"requestId\",\"type\":[\"null\",\"string\"]},{\"name\":\"mediaGuid\",\"type\":[\"string\",\"null\"]},{\"name\":\"rotation\",\"type\":[\"string\",\"null\"]},{\"name\":\"generateThumbnail\",\"type\":\"boolean\"},{\"name\":\"genOutput\",\"type\":[\"string\",\"null\"]},{\"name\":\"rejectedOutput\",\"type\":[\"string\",\"null\"]},{\"name\":\"sourceUrl\",\"type\":[\"string\",\"null\"]},{\"name\":\"callback\",\"type\":[\"string\",\"null\"]},{\"name\":\"outputFolder\",\"type\":[\"string\",\"null\"]},{\"name\":\"rejectedFolder\",\"type\":[\"string\",\"null\"]},{\"name\":\"providedName\",\"type\":[\"string\",\"null\"]},{\"name\":\"categoryId\",\"type\":[\"string\",\"null\"]},{\"name\":\"caption\",\"type\":[\"string\",\"null\"]},{\"name\":\"mediaProviderId\",\"type\":[\"string\",\"null\"]},{\"name\":\"comment\",\"type\":[\"string\",\"null\"]},{\"name\":\"failedReason\",\"type\":[\"string\",\"null\"]},{\"name\":\"retryCount\",\"type\":\"int\"},{\"name\":\"expediaId\",\"type\":\"int\"},{\"name\":\"domain\",\"type\":\"string\"},{\"name\":\"domainId\",\"type\":\"string\"},{\"name\":\"domainProvider\",\"type\":\"string\"},{\"name\":\"domainDerivativeCategory\",\"type\":[\"string\",\"null\"]},{\"name\":\"fileName\",\"type\":\"string\"},{\"name\":\"fileUrl\",\"type\":\"string\"},{\"name\":\"userId\",\"type\":[\"string\",\"null\"]},{\"name\":\"stagingKey\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"StagingKey\",\"fields\":[{\"name\":\"externalId\",\"type\":[\"string\",\"null\"]},{\"name\":\"providerId\",\"type\":[\"string\",\"null\"]},{\"name\":\"sourceId\",\"type\":[\"string\",\"null\"]}]}]},{\"name\":\"fingerprints\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Fingerprint\",\"fields\":[{\"name\":\"algorithm\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}]}}]},{\"name\":\"metadataDetails\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"string\"}]},{\"name\":\"domainFields\",\"type\":[\"string\",\"null\"]},{\"name\":\"derivatives\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Derivative\",\"fields\":[{\"name\":\"location\",\"type\":\"string\"},{\"name\":\"type\",\"type\":\"string\"},{\"name\":\"width\",\"type\":\"int\"},{\"name\":\"height\",\"type\":\"int\"},{\"name\":\"fileSize\",\"type\":\"int\"}]}}]},{\"name\":\"logEntries\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"LogEntry\",\"fields\":[{\"name\":\"activityTime\",\"type\":\"long\"},{\"name\":\"activity\",\"type\":{\"type\":\"enum\",\"name\":\"Activity\",\"symbols\":[\"Unknown\",\"Archive\",\"PostProcess\",\"DerivativeCalculation\",\"DerivativeCreation\",\"MediaUpload\",\"MediaMessageReceived\",\"Publish\",\"Reception\",\"Reject\",\"DcpPickup\",\"PreProcess\",\"CollectorStart\",\"CollectorDownload\",\"CollectorDupMediaFound\",\"CollectorValidation\",\"CollectorConvert\",\"SourceArchived\",\"DataStorage\",\"DataStorage2\",\"FileNotFound\"]}},{\"name\":\"appName\",\"type\":\"string\"}]}}]}]}"}' http://localhost:8081/subjects/imageTestTopic10-value/versions
+
+curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"ImageMessageAvro\",\"namespace\":\"io.confluent.examples.producer.model\",\"fields\":[{\"name\":\"active\",\"type\":[\"string\",\"null\"]},{\"name\":\"hidden\",\"type\":[\"string\",\"null\"]},{\"name\":\"clientId\",\"type\":[\"string\",\"null\"]},{\"name\":\"requestId\",\"type\":[\"null\",\"string\"]},{\"name\":\"mediaGuid\",\"type\":[\"string\",\"null\"]},{\"name\":\"rotation\",\"type\":[\"string\",\"null\"]},{\"name\":\"generateThumbnail\",\"type\":\"string\"},{\"name\":\"genOutput\",\"type\":[\"string\",\"null\"]},{\"name\":\"rejectedOutput\",\"type\":[\"string\",\"null\"]},{\"name\":\"sourceUrl\",\"type\":[\"string\",\"null\"]},{\"name\":\"callback\",\"type\":[\"string\",\"null\"]},{\"name\":\"outputFolder\",\"type\":[\"string\",\"null\"]},{\"name\":\"rejectedFolder\",\"type\":[\"string\",\"null\"]},{\"name\":\"providedName\",\"type\":[\"string\",\"null\"]},{\"name\":\"categoryId\",\"type\":[\"string\",\"null\"]},{\"name\":\"caption\",\"type\":[\"string\",\"null\"]},{\"name\":\"mediaProviderId\",\"type\":[\"string\",\"null\"]},{\"name\":\"comment\",\"type\":[\"string\",\"null\"]},{\"name\":\"failedReason\",\"type\":[\"string\",\"null\"]},{\"name\":\"retryCount\",\"type\":\"int\"},{\"name\":\"expediaId\",\"type\":\"int\"},{\"name\":\"domain\",\"type\":\"string\"},{\"name\":\"domainId\",\"type\":\"string\"},{\"name\":\"domainProvider\",\"type\":\"string\"},{\"name\":\"domainDerivativeCategory\",\"type\":[\"string\",\"null\"]},{\"name\":\"fileName\",\"type\":\"string\"},{\"name\":\"fileUrl\",\"type\":\"string\"},{\"name\":\"width\",\"type\":\"int\"},{\"name\":\"height\",\"type\":\"int\"},{\"name\":\"fileSize\",\"type\":\"int\"},{\"name\":\"userId\",\"type\":[\"string\",\"null\"]},{\"name\":\"stagingKey\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"StagingKey\",\"fields\":[{\"name\":\"externalId\",\"type\":[\"string\",\"null\"]},{\"name\":\"providerId\",\"type\":[\"string\",\"null\"]},{\"name\":\"sourceId\",\"type\":[\"string\",\"null\"]}]}]},{\"name\":\"fingerprints\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Fingerprint\",\"fields\":[{\"name\":\"algorithm\",\"type\":\"string\"},{\"name\":\"values\",\"type\":{\"type\":\"array\",\"items\":\"string\"}}]}}]},{\"name\":\"metadataDetails\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"string\"}]},{\"name\":\"domainFields\",\"type\":[\"string\",\"null\"]},{\"name\":\"derivatives\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Derivative\",\"fields\":[{\"name\":\"location\",\"type\":\"string\"},{\"name\":\"type\",\"type\":\"string\"},{\"name\":\"width\",\"type\":\"int\"},{\"name\":\"height\",\"type\":\"int\"},{\"name\":\"fileSize\",\"type\":\"int\"}]}}]},{\"name\":\"logEntries\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"LogEntry\",\"fields\":[{\"name\":\"activityTime\",\"type\":\"long\"},{\"name\":\"activity\",\"type\":{\"type\":\"enum\",\"name\":\"Activity\",\"symbols\":[\"Unknown\",\"Archive\",\"PostProcess\",\"DerivativeCalculation\",\"DerivativeCreation\",\"MediaUpload\",\"MediaMessageReceived\",\"Publish\",\"Reception\",\"Reject\",\"DcpPickup\",\"PreProcess\",\"CollectorStart\",\"CollectorDownload\",\"CollectorDupMediaFound\",\"CollectorValidation\",\"CollectorConvert\",\"SourceArchived\",\"DataStorage\",\"FileNotFound\"]}},{\"name\":\"appName\",\"type\":\"string\"}]}}]}]}"}' http://localhost:8081/subjects/imageTestTopic11-value/versions
+
+curl -X PUT -H "Content-Type: application/vnd.schemaregistry.v1+json" \
+    --data '{"compatibility": "BACKWARD"}' \
+    http://localhost:8081/config/imageTestTopic10-value
+ ./bin/kafka-console-consumer --zookeeper localhost:2181 --topic imageTestTopic11 --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+                
+                
+curl -X GET http://localhost:8081/subjects/imageTestTopic10-value/versions/latest
+
+     ./bin/kafka-console-consumer --zookeeper localhost:2181 --topic testAvroLocal --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+      ./bin/kafka-console-consumer --zookeeper localhost:2181 --topic two-p-topic --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+                          
+new confluent:  /Users/seli/Downloads/Applications/confluent-3.0.0
+
+
+
+0125 for string test:
+
+./bin/kafka-console-consumer --topic my-test-topic   --zookeeper cs-media-zookeeper.test.expedia.com:80  --from-beginning
+./bin/kafka-avro-console-consumer --topic image-message-dev34 \
+             --zookeeper cs-media-zookeeper.test.expedia.com:80 \
+             --from-beginning
+
+01
+
+
+/home/seli/confluent-3.1.2/bin/kafka-topics --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80 --topic cs-media-image-published --describe
+
+
+
+
+0213
+
+
+
+./bin/kafka-console-producer --broker-list cs-media-kafka.test.expedia.com:80  --topic hello_world_topic 
+
+./bin/kafka-console-consumer  --bootstrap-server cs-media-zookeeper.test.expedia.com:80  --from-beginning --topic hello_world_topic  
+
+
+
+./bin/kafka-console-producer --broker-list 10.2.88.105:9092  --topic world_topic 
+
+./bin/kafka-console-consumer  --bootstrap-server 10.2.88.105:9092  --from-beginning --topic hello_world_topic  
+
+    ./bin/kafka-reassign-partitions --zookeeper 10.2.68.173:2181 --reassignment-json-file ~/replication-single-partition.json --execute
+
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --topic lcm-consumer-int-0526-DerivativeMessageStore-changelog --describe
+
+
+/bin/kafka-consumer-groups --describe --group mediadb-consumer-processor  --bootstrap-server 10.9.37.87:9092 --topic cs-media-image-fingerprints
+
+
+
+test:
+lcm-consumer-test-processor-ImageMessageStore-changelog
+
+./zookeeper-shell  10.2.68.173:2181
+rmr /admin/reassign_partitions
+
+int:
+
+./bin/kafka-reassign-partitions --zookeeper 10.2.68.173:2181 --reassignment-json-file ~/replication-int-partition.json --execute

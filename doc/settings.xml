@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!-- This is a Maven user settings template file to be by Content Systems developers. -->
+<!-- You must replace occurences of ***REPLACE_THIS*** with appropriate values -->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- DOCUMENTATION: http://maven.apache.org/ref/3.2.1/maven-settings/settings.html -->
+    
+    <interactiveMode>true</interactiveMode>
+    <offline>false</offline>
+    
+    <!-- Change this if you want local repository to be placed in an other folder like D:/DEV/... -->
+    <localRepository>${user.home}/.m2/repository</localRepository>
+
+    <mirrors>
+        <!-- Main mirror for resolving dependencies -->
+        <!-- to run kafka, need to comment nexus -->
+        <mirror> 
+            <id>nexus-karmalab</id>
+            <mirrorOf>*</mirrorOf>
+            <url>http://nexus.sb.karmalab.net/nexus/content/groups/content-systems/</url>
+        </mirror>     
+    <!-- 
+    <mirror>
+      <id>central</id>
+      <name>UK Central</name>
+      <url>http://central.maven.org/maven2</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>    -->
+    
+     <mirror>
+      <id>confluent</id>
+      <name>confluent Central</name>
+      <url>http://packages.confluent.io/maven</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror> 
+    
+    <!--
+    <mirror>
+      <id>localtest</id>
+      <name>local repo</name>
+      <url>http://localhost:38081/repository/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror> -->
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <!-- For release and SCM plugins use, not required otherwise -->
+            <id>perforce-1989</id>
+            <properties>
+                <perforce.user>${user.name}</perforce.user>
+                <perforce.host>perforce.sea.corp.expecn.com:1989</perforce.host>
+            </properties>
+        </profile>
+        
+        <!-- EWE Application Lifecycle Management SonarQube -->
+        <profile>
+            <id>sonar</id>
+            <properties>
+                <sonar.host.url>https://sonar.karmalab.net/</sonar.host.url>
+            </properties>
+        </profile>
+        
+        <!-- EWE Application Lifecycle Management Jenkins -->
+        <profile>
+            <id>jenkins</id>
+            <properties>
+                <ci.management.system>jenkins</ci.management.system>
+                <ci.management.url>http://jenkins.karmalab.net/jenkins/</ci.management.url>
+            </properties>
+        </profile>
+        
+        <!-- Control dependencies resolution and artifacts distribution -->
+        <profile>
+            <id>repositories</id>
+            <properties>
+                <!-- These two properties are kept for potential backward compatibility for older projects. -->
+				<!-- Starting from version 1.2.2, these are defined in expedia.build:parent:1.2.2:pom -->
+                <distribution.snapshot.url>http://nexus.sb.karmalab.net/nexus/content/repositories/cs-snapshots/</distribution.snapshot.url>
+                <distribution.release.url>http://nexus.sb.karmalab.net/nexus/content/repositories/cs-releases/</distribution.release.url>
+            </properties>
+            <repositories>
+                <repository>
+                    <id>cs-releases</id>
+                    <snapshots><enabled>false</enabled></snapshots>
+                    <releases><enabled>true</enabled></releases>
+                    <url>http://nexus.sb.karmalab.net/nexus/content/repositories/cs-releases/</url>
+                </repository>
+                <repository>
+                    <id>cs-snapshots</id>
+                    <snapshots><enabled>true</enabled></snapshots>
+                    <releases><enabled>false</enabled></releases>
+                    <url>http://nexus.sb.karmalab.net/nexus/content/repositories/cs-snapshots/</url>
+                </repository>
+                
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>cs-plugins-releases</id>
+                    <snapshots><enabled>false</enabled></snapshots>
+                    <releases><enabled>true</enabled></releases>
+                    <url>http://nexus.sb.karmalab.net/nexus/content/repositories/cs-plugins-releases/</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>cs-plugins-snapshots</id>
+                    <snapshots><enabled>true</enabled></snapshots>
+                    <releases><enabled>false</enabled></releases>
+                    <url>http://nexus.sb.karmalab.net/nexus/content/repositories/cs-snapshots/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+
+        <!-- JDK profiles -->
+        <profile>
+            <id>JDK_1.6</id>
+            <properties>
+                <java.sdk.1.6>***UPDATE_THIS***</java.sdk.1.6>
+                <javac.1.6>"${java.sdk.1.6}/bin/javac.exe"</javac.1.6>
+                <javac.bootclasspath.1.6>${java.sdk.1.6}/lib/dt.jar;${java.sdk.1.6}/lib/tools.jar;${java.sdk.1.6}/jre/lib/charsets.jar;${java.sdk.1.6}/jre/lib/rt.jar;${java.sdk.1.6}/jre/lib/jce.jar;${java.sdk.1.6}/jre/lib/jsse.jar</javac.bootclasspath.1.6>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>JDK_1.7</id>
+            <properties>
+                <java.sdk.1.7>***UPDATE_THIS***</java.sdk.1.7>
+                <javac.1.7>"${java.sdk.1.7}/bin/javac.exe"</javac.1.7>
+                <javac.bootclasspath.1.7>${java.sdk.1.7}/lib/dt.jar;${java.sdk.1.7}/lib/tools.jar;${java.sdk.1.7}/jre/lib/charsets.jar;${java.sdk.1.7}/jre/lib/rt.jar;${java.sdk.1.7}/jre/lib/jce.jar;${java.sdk.1.7}/jre/lib/jsse.jar</javac.bootclasspath.1.7>
+            </properties>
+        </profile>
+        
+        <profile>
+            <id>JDK_1.8</id>
+            <properties>
+                <java.sdk.1.8>***UPDATE_THIS***</java.sdk.1.8>
+                <javac.1.8>"${java.sdk.1.8}/bin/javac.exe"</javac.1.8>
+                <javac.bootclasspath.1.8>${java.sdk.1.8}/lib/dt.jar;${java.sdk.1.8}/lib/tools.jar;${java.sdk.1.8}/jre/lib/charsets.jar;${java.sdk.1.8}/jre/lib/rt.jar;${java.sdk.1.8}/jre/lib/jce.jar;${java.sdk.1.8}/jre/lib/jsse.jar</javac.bootclasspath.1.8>
+            </properties>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <!--activeProfile>JDK_1.6</activeProfile-->
+        <activeProfile>JDK_1.7</activeProfile>
+        <activeProfile>perforce-1989</activeProfile>
+        <activeProfile>sonar</activeProfile>
+        <activeProfile>jenkins</activeProfile>
+        <activeProfile>repositories</activeProfile>
+    </activeProfiles>
+    
+    <!-- List of groupIds to search for a plugin when that plugin groupId is not explicitly provided. -->
+    <pluginGroups>
+        <pluginGroup>org.sonatype.plugins</pluginGroup>
+        <pluginGroup>org.jenkins-ci.tools</pluginGroup>
+        <pluginGroup>org.jboss.maven.plugins</pluginGroup>
+    </pluginGroups>
+</settings>

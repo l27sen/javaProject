@@ -1,0 +1,126 @@
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar com.expedia.content.media.processing.pipeline.tool.KafkaImageSendUpdate
+
+   /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId233  -retryTopic  cs-media-image-message-retry  -processTopic  cs-media-image-message  -fromDate 2017-06-01
+    /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0601 -retryTopic  cs-media-lcm-image-fingerprints-retry  -processTopic  cs-media-image-fingerprints  -fromDate 2017-06-01
+    /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId2322a -retryTopic  cs-media-image-collection-retry  -processTopic  cs-media-image-collection  -fromDate 2017-06-05
+    /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0612 -retryTopic  cs-media-image-derivatives-retry  -processTopic  cs-media-image-derivatives  -fromDate 2017-06-08
+    
+    
+    nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar com.expedia.content.media.processing.pipeline.tool.ScanDynamoByGuidList >reprcoess0607.log
+    
+    
+    support:
+    
+    java -cp domain.jar:dropbox-core-sdk-1.7.7.jar  com.expedia.content.media.processing.pipeline.tools.SourceImageRename 
+
+nohup java -cp domain.jar:dropbox-core-sdk-1.7.7.jar  com.expedia.content.media.processing.pipeline.tools.DropFileUpload /mnt/extradd/sourceImage  fo6dy1s28XAAAAAAAAMCoAAvGCrOVl-NrNKnYs3_avM  >0712Rotate.log &
+
+
+
+reprocess retry topic
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId2322a -retryTopic  cs-media-image-derivatives-retry  -processTopic  cs-media-image-derivatives  -fromDate 2017-05-26 >reprocess_dcp_0531.log
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId2322a -retryTopic  cs-media-image-derivatives-retry  -processTopic  cs-media-image-derivatives  -fromDate 2017-05-26 >reprocess_dcp_0531.log
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId2322a -retryTopic  cs-media-image-collection-retry  -processTopic  cs-media-image-collection  -fromDate 2017-05-26 >reprocess_collection_0531.log
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId2322a -retryTopic  cs-media-lcm-image-fingerprints-retry  -processTopic  cs-media-image-fingerprints  -fromDate 2017-05-26 >reprocess_finger_0531.log
+
+
+
+send message to topic
+nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaPublisherTestAWS > logLcm.log &
+
+
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar com.expedia.content.media.processing.pipeline.tool.KafkaImageSendUpdate
+
+reprocess by scan dynamo
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar com.expedia.content.media.processing.pipeline.tool.ScanDynamoByGuidList
+
+reproces by scan mysql 
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:mysql-connector-java-6.0.4.jar:spring-web-4.1.7.RELEASE.jar com.expedia.content.media.processing.pipeline.tool.mediaDB.ReprocessMediaByGuidList
+
+  
+  reprocess:
+
+0615
+ /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0817.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0817 -retryTopic  cs-media-lcm-image-derivative-created-retry  -processTopic  cs-media-image-derivative-created  -fromDate 2017-08-04 -onlyPrint true |&tee reprocessImageMessage0629.log
+ 
+ /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0817.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0817cdf  -retryTopic  cs-media-lcm-image-message-retry  -processTopic  cs-media-image-message  -fromDate 2017-08-04 -onlyPrint false |&tee reprocessFull0817.log
+ 
+ 
+  537  ls
+  538  history
+  539  /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061z -retryTopic  cs-media-image-message-retry  -processTopic  cs-media-image-message  -fromDate 2017-06-15 -onlyPrint false |&tee reprocessImageMessage0629.log
+  540  /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0628 -retryTopic  cs-media-image-message-retry  -processTopic  cs-media-image-message  -fromDate 2017-06-15 -onlyPrint false |&tee reprocessImageMessage0629.log
+  541  ls
+  542  history
+  543  /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061f -retryTopic  cs-media-image-derivatives-retry  -processTopic  cs-media-image-derivatives  -fromDate 2017-06-15 -onlyPrint false |&tee reprocess0629_dcp.log
+  544  hisotry
+  545  history
+  546  /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061v -retryTopic  cs-media-image-fingerprints-retry  -processTopic  cs-media-image-fingerprints  -fromDate 2017-06-15 -onlyPrint false |&tee reprocess0629_fingprint
+  547  history
+  548  /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061g -retryTopic  cs-media-image-collection-retry  -processTopic  cs-media-image-collection  -fromDate 2017-06-15 -onlyPrint false |&tee reprocess0629_collection
+  549  hisotry
+  550  history
+  551  /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061b -retryTopic  cs-media-image-activity-log-retry  -processTopic  cs-media-image-activity-log  -fromDate 2017-06-15 -onlyPrint false |&tee reprocess0629_activity.log
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061z -retryTopic  cs-media-image-message-retry  -processTopic  cs-media-image-message  -fromDate 2017-06-13 -onlyPrint true |&tee reprocessImageMessage0615.log
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061g -retryTopic  cs-media-image-collection-retry  -processTopic  cs-media-image-collection  -fromDate 2017-06-13 -onlyPrint false |&tee reprocess0615_collection
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061v -retryTopic  cs-media-image-fingerprints-retry  -processTopic  cs-media-image-fingerprints  -fromDate 2017-06-13 -onlyPrint true |&tee reprocess0615_fingprint
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061c -retryTopic  cs-media-image-derivatives-retry  -processTopic  cs-media-image-derivatives  -fromDate 2017-06-01 -onlyPrint true |&tee reprocess0615_dcp
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061b -retryTopic  cs-media-image-activity-log-retry  -processTopic  cs-media-image-activity-log  -fromDate 2017-06-13 -onlyPrint false |&tee reprocess0615_activity.log
+
+
+
+0717
+
+cp image by derivative name
+nohup java -cp domain.jar:dropbox-core-sdk-1.7.7.jar  com.expedia.content.media.processing.pipeline.tools.SourceImageCopy >0717copy.log &
+
+upload image 
+nohup java -cp domain.jar:dropbox-core-sdk-1.7.7.jar  com.expedia.content.media.processing.pipeline.tools.DropFileUpload /mnt/extradd/CSHD-2001-Image  fo6dy1s28XAAAAAAAAMd1L8YXmbb7rXBJA7Kbi1gDiE  >0717.log &
+
+
+
+nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar com.expedia.content.media.processing.pipeline.tool.ScanDynamoByGuidList > reprocess0730.log &
+
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.DeleteMediaByGuidList
+
+
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons0616.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId061b -retryTopic  cs-media-image-activity-log-retry  -processTopic  cs-media-image-activity-log  -fromDate 2017-06-13 -onlyPrint false |&tee reprocess0615_activity.log
+
+
+nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0831abc -retryTopic cs-media-lcm-image-message-retry -processTopic cs-media-image-message -fromDate 2017-08-24> reprocess0824.log &
+
+
+nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0831ab  -retryTopic  cs-media-lcm-image-derivative-created-retry  -processTopic  cs-media-image-derivative-created  -fromDate 2017-08-31 > reprocessMediaAdd31.log &
+
+0905
+
+fix status sync issue. 
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons-print.jar:mysql-connector-java-6.0.4.jar:spring-web-4.1.7.RELEASE.jar com.expedia.content.media.processing.pipeline.tool.LCMMediaDBSyncTool "18561"
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.ScanDynamoAll -totalSegment 5 -segment 0 -limit 500 -environment prod -bucketName ewe-cs-media-test -dynamoEndpoint "https://dynamodb.us-west-2.amazonaws.com" > mig.log &
+
+
+fix hero status by EID
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar com.expedia.content.media.processing.pipeline.tool.MediaHeroIssueFix "17281403" 
+
+
+Test LCM Sync
+
+ ./bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.test.expedia.com:80 --topic lcm-change-media-stress --compression-codec snappy --property schema.registry.url=http://cs-confluent-platform-schema-registry.test.expedia.com:80 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_OPERATION","type":["null","string"]},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"]},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"]},{"name":"MediaID","type":"int"}]}' < ~/mediadata.txt
+ 
+  ./bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.test.expedia.com:80 --topic lcm-change-media-int --compression-codec snappy --property schema.registry.url=http://cs-confluent-platform-schema-registry.test.expedia.com:80 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_OPERATION","type":["null","string"]},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"]},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"]},{"name":"MediaID","type":"int"}]}' < ~/mediadata.txt
+
+ 
+ ./bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.test.expedia.com:80 --topic lcm-change-media-stress --compression-codec snappy --property schema.registry.url=http://cs-confluent-platform-schema-registry.test.expedia.com:80 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_OPERATION","type":["null","string"]},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"]},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"]},{"name":"MediaID","type":"int"}]}' < ~/mediadata.txt
+
+
+  

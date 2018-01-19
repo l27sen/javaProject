@@ -1,0 +1,447 @@
+
+./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80 --group  mediadb-consumer-processor-stress --reset-offsets --to-latest --all-topics --execute
+
+./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80 --group  lcm-consumer-stress-partition-0826 --reset-offsets --to-offset 400 --topic image-derivative-created-stress2  --execute
+
+
+
+./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80 --group mediadb-consumer-processor --reset-offsets  --topic cs-media-image-derivatives --to-offset 1030243  --execute
+./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80 --group mediadb-consumer-processor --reset-offsets  --topic cs-media-image-activity-log --to-offset 9191064  --execute
+
+
+./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80 --group derivatives-created-processor --reset-offsets  --topic cs-media-image-activity-log --to-offset 9191064  --execute
+./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80 --group published-media-processor --reset-offsets  --topic cs-media-image-activity-log --to-offset 9191064  --execute
+
+
+
+//lcm
+./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80 --group lcm-consumer-prod-0719 --reset-offsets  --topic cs-media-image-derivative-created --to-offset 671596  --execute
+
+
+
+
+
+./bin/kafka-consumer-groups --describe --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80  --group mediadb-consumer-processor-stress
+
+
+
+    cs-media-schemaregistry.test.expedia.com:80
+    
+    write to topic:
+ ./bin/kafka-console-producer --broker-list 10.2.89.52:9092 --topic TextLinesTopic
+ ./bin/kafka-console-consumer --topic WordsWithCountsTopic --from-beginning --zookeeper localhost:2181  --property print.key=true --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+    
+   produce message from command:
+    ./bin/kafka-avro-console-producer  --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80 \
+             --broker-list 10.2.90.92:9092 --topic tSchema \
+             --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f3","type":"string"}]}'
+   
+                 ./bin/kafka-avro-console-producer  --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80 \
+             --broker-list cs-media-kafka.test.expedia.com:80 --topic tSchema5 \
+             --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f3","type":"string"}]}'
+
+consume message from topic:          
+     ./bin/kafka-avro-console-consumer --topic tSchema5 \
+            --zookeeper cs-media-zookeeper.test.expedia.com:80 \
+             --from-beginning  --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80
+      ./bin/kafka-avro-console-consumer --topic tSchema5 --zookeeper cs-media-zookeeper.test.expedia.com:80 --from-beginning --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80
+      ./bin/kafka-avro-console-consumer --topic image-message-test --zookeeper cs-media-zookeeper.test.expedia.com:80 --from-beginning --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80
+        ./bin/kafka-console-consumer --zookeeper cs-media-zookeeper.test.expedia.com:80 --bootstrap-server http://cs-media-kafka.test.expedia.com:80 --from-beginning --topic image-message-test 
+
+             ./bin/kafka-avro-console-consumer --topic _schemaregTestschema \
+            --bootstrap-server 10.2.71.207:9092 \
+             --from-beginning   
+2 .schema get             
+             
+    curl -X GET http://cs-media-schemaregistry.test.expedia.com:80/subjects/_schemaregTestschema-value/versions/1
+
+             curl -X GET http://cs-media-schemaregistry.test.expedia.com:80/subjects/image-message-test-value/versions/1
+              curl -X GET http://cs-media-schemaregistry.test.expedia.com:80/subjects/tSchema5-value/versions/1
+              
+              
+               curl -X GET http://10.2.90.149:8081/subjects/image-derivative-created-test-value/versions/1
+               
+               curl -X GET http://10.2.90.149:8081/subjects/image-message-test-value/versions/latest
+               curl -X DELETE http://10.2.90.149:8081/subjects/image-message-test-value/versions/3
+               Incompatible AVRO schema
+               
+               curl -X PUT http://10.2.90.149:8081/config  -d '{"compatibility": "NONE"}' -H "Content-Type:application/json"
+             
+             curl -X GET http://10.2.71.207:8081/subjects/_schemaregTestschema-value/1
+
+           
+                       curl -X GET http://10.2.88.121:8081/subjects/image-message-test-value/versions/1
+
+            curl -X GET http://10.2.88.121:8081/subjects/image-collection-stress-retry-value/versions/1
+            
+            
+                        curl -X GET http://10.2.88.121:8081/subjects/lcm-image-message-test-retry-value/versions/1
+
+            
+            curl -X GET http://10.2.88.121:8081/subjects/image-collection-test-retry-value/versions/1
+   curl -X GET http://cs-confluent-platform-schema-registry.test.expedia.com:80/subjects/image-message-test-value/versions/1
+   
+      curl -X GET http://cs-confluent-platform-schemaregistry.prod-p.expedia.com:80/subjects/cs-media-image-message-value/versions/1
+
+             
+local:
+
+    ./bin/kafka-avro-console-producer  --property schema.registry.url=http://localhost:8081 \
+             --broker-list localhost:9092 --topic testSchema2 \
+             --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+             
+./bin/kafka-avro-console-producer --broker-list localhost:9092 --topic testSchema3  --property schema.registry.url=http://localhost:8081 --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+            
+            
+            curl -X GET http://localhost:8081/subjects/testSchema3-value/1
+   
+   ./bin/kafka-avro-console-producer \
+             --broker-list localhost:9092 --topic testSchema2 \
+             --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+             
+./bin/kafka-avro-console-consumer --topic testSchema3 \
+            --bootstrap-server localhost:9092\
+             --from-beginning       
+             
+ ./bin/kafka-avro-console-consumer --topic lcm-change-media --zookeeper localhost:2181 --from-beginning                   
+             
+             
+  10.2.88.105   error: 40403 ,, but ImageConsumer can get the message.
+  
+3.connector  
+  prod
+  curl -X GET http://10.9.36.167:8081/subjects/
+  
+  curl -X  POST http://10.2.88.105:8083/connectors 
+  curl -x  GET http://10.2.88.105:8083/connectors
+  
+      ./bin/kafka-avro-console-producer  --property schema.registry.url=http://10.2.88.105:8081 \
+             --broker-list 10.2.88.105:9092 --topic testSchema \
+             --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+             
+         ./bin/kafka-console-consumer --topic image-message-stress-partition-test \
+            --bootstrap-server 10.2.88.73:9092 \
+             --from-beginning     
+             
+             
+             
+             
+         ./bin/kafka-console-consumer --topic cs-media-image-derivatives-retry --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80   --from-beginning   
+             
+             ./bin/kafka-console-consumer --topic StringImageMessageTopic \
+            --bootstrap-server 10.2.90.76:9092   --from-beginning   
+             
+                  ./bin/kafka-console-consumer --topic lcm-change-media-stress \
+            --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80 \
+             --from-beginning       
+             
+              ./bin/kafka-console-consumer --topic image-message-test --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80  --from-beginning     
+             
+        ./bin/kafka-topics --zookeeper cs-media-zookeeper.test.expedia. --alter --topic image-activity-log-int --config retention.ms=100000
+             
+               ./bin/kafka-avro-console-consumer --topic image-published-int --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80  ---property schemaRegistryServer: http://10.2.90.149:8081,http://10.2.91.73:8081,http://10.2.91.197:8081  --from-beginning   
+             
+             ./bin/kafka-console-consumer --topic lcm-change-media-int --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80 --from-beginning      
+             
+             
+             
+                  ./bin/kafka-console-consumer --topic cs-media-lcm-image-message-retry \
+            --bootstrap-server 10.9.34.206:9092   --from-beginning   
+             
+             
+                    ./bin/kafka-avro-console-consumer --topic image-message-test \
+            --bootstrap-server 10.2.88.105:9092 \
+             --from-beginning    
+             
+             
+./bin/kafka-avro-console-consumer --topic testSchema \
+            --zookeeper 10.2.88.105:2181 \
+             --from-beginning       
+             
+      
+        ./bin/kafka-topics --zookeeper 10.2.68.173:2181 --list                 
+
+4. alter topic
+./bin/kafka-topics --zookeeper 10.2.88.105:2181 --delete  --topic image-message-test
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --topic image-derivative-created-test --describe
+./bin/kafka-topics --zookeeper 10.2.88.105:2181 --topic image-collection-test --alter  --partitions 50
+./bin/kafka-topics --zookeeper 10.2.88.105:2181 --topic image-collection-test --alter  --partitions 50
+./bin/kafka-topics --zookeeper 10.2.88.105:2181 --topic image-fingerprints-test --alter  --partitions 50
+./bin/kafka-topics --zookeeper 10.2.88.105:2181 --topic image-derivatives-test --alter  --partitions 50
+
+./bin/kafka-topics --zookeeper 10.2.88.105:2181 --topic image-activity-log-test --alter  --partitions 50
+
+./bin/kafka-reassign-partitions --zookeeper 10.2.68.173:2181 --reassignment-json-file ~/replication-single-partition.json --execute
+
+
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --topic image-fingerprints-stress-partition-test --describe
+
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --topic lcm-consumer-stress-partition-ImageMessageStore-changelog --describe
+
+curl -X POST http://10.2.89.37:8083/connectors/lcm-change-media-stress/restart
+curl -X POST http://cs-confluent-platform-connect.test.expedia.com/connectors/lcm-change-media-stress/restart
+
+curl GET http://cs-confluent-platform-connect.test.expedia.com/connectors/lcm-change-media-stress/
+
+     String Test:
+     
+     sen.kafka:9092
+ ./bin/kafka-console-producer --broker-list 10.2.88.105:9092 --topic TextLinesTopic
+ 
+ ./bin/kafka-console-consumer --topic TextLinesTopic --from-beginning --zookeeper 10.2.88.105:2181  --from-beginning    
+              
+              
+  0218 Latest:
+              
+      works fine:        
+              
+    ./bin/kafka-console-producer --broker-list cs-media-kafka.test.expedia.com:80 --topic TextLinesTopic
+ 
+    ./bin/kafka-console-consumer --topic TextLinesTopic --from-beginning --zookeeper cs-media-zookeeper.test.expedia.com:80  --from-beginning  
+           
+           
+ ./bin/kafka-avro-console-consumer --topic image-message-test88 --zookeeper cs-media-zookeeper.test.expedia.com:80 --from-beginning --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80
+ 
+./bin/kafka-avro-console-producer --broker-list 10.2.88.105:9092 --topic image-message-test88 --value-serializer io.confluent.kafka.serializers.KafkaAvroSerializer   --property value.schema='{"namespace":"com.expedia.content.media.processing.pipeline.avro","name":"ImageMessageAvro","type":"record","fields":[{"name":"active","type":["string","null"]},{"name":"hidden","type":["string","null"]},{"name":"clientId","type":["string","null"]},{"name":"requestId","type":["null",{"type":"string"}]},{"name":"mediaGuid","type":["string","null"]},{"name":"callback","type":["string","null"]},{"name":"providedName","type":["string","null"]},{"name":"categoryId","type":["string","null"]},{"name":"caption","type":["string","null"]},{"name":"mediaProviderId","type":["string","null"]},{"name":"comment","type":["string","null"]},{"name":"domain","type":["string","null"]},{"name":"domainId","type":["string","null"]},{"name":"domainProvider","type":["string","null"]},{"name":"fileName","type":["string","null"]},{"name":"fileUrl","type":["string","null"]},{"name":"userId","type":["string","null"]},{"name":"operation","type":["string","null"]},{"name":"stagingKey","type":["null",{"type":"record","name":"StagingKey","fields":[{"name":"externalId","type":["string","null"]},{"name":"providerId","type":["string","null"]},{"name":"sourceId","type":["string","null"]}]}]},{"name":"domainFields","type":["string","null"]},{"name":"logEntries","type":["null",{"type":"array","items":{"name":"LogEntry","type":"record","fields":[{"name":"activityTime","type":"long"},{"name":"activity","type":{"type":"enum","name":"Activity","symbols":["Unknown","Archive","PostProcess","DerivativeCalculation","DerivativeCreation","MediaUpload","MediaMessageReceived","Publish","Reception","Reject","DcpPickup","PreProcess","CollectorStart","CollectorDownload","CollectorDupMediaFound","CollectorValidation","CollectorConvert","SourceArchived","DataStorage","FileNotFound"]}},{"name":"appName","type":"string"}]}}]}]}' < /tmp/sqlGuidOutPut_500_test_image.csv
+
+                 ./bin/kafka-avro-console-consumer --topic image-message-test88 --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80 \
+             --bootstrap-server cs-media-kafka.test.expedia.com:80 \
+             --from-beginning 
+             
+                ./bin/kafka-avro-console-consumer --topic lcm-change-media-test --zookeeper cs-media-zookeeper.test.expedia.com:80 --from-beginning --property schema.registry.url=http://cs-media-schemaregistry.test.expedia.com:80
+                
+                Connector:
+                curl -H "Content-Type: application/json" -X POST -d '{"name":"lcm-change-media","config":{"connector.class":"io.confluent.connect.jdbc.JdbcSourceConnector","connection.url":"jdbc:sqlserver://CHELLSSSQL23.karmalab.net;databaseName=LodgingCatalogMaster_Phoenix;user=TravCatalog;password=travel","query":"select * from vwChangesMedia","incrementing.column.name":"SYS_CHANGE_VERSION","tasks.max":"5","topic.prefix":"lcm-change-media-test","mode":"incrementing","poll.interval.ms":5000}}' http://cs-confluent-kafkaconnect.us-west-2.test.expedia.com/connectors
+                
+                
+  0339 migration
+  
+  
+  00:11:49 java -server -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=1098 -Dcom.sun.management.jmxremote.rmi.port=1099 -server -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -Xmx1024m -Xms512m -Djava.security.egd=file:/dev/./urandom -Djdk.xml.entityExpansionLimit=0 -Djdk.xml.elementAttributeLimit=0 -Djdk.xml.maxOccur=0 -Djdk.xml.totalEntitySizeLimit=0 -Dmonitoring.agent.properties=/app/conf/monitoring.properties -Xdebug -Xrunjdwp:server=y,transport=dt_socket,suspend=n,address=8000 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=1098 -Dcom.sun.management.jmxremote.rmi.port=1098 -Dapplication.name=media-im-mdb-cons-service -Dapplication.environment=test -DactiveVersionFileLocation=/app/active.txt -Dapplication.home=/app -Dspring.profiles.active=test -DAWS_REGION=us-west-2 -DACTIVE_VERSION=8a4902b3d063faca4c74655edf841289c979dc86 -jar /app/bin/media-im-mdb-cons-service.jar
+  
+  
+  nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:kafka-clients-0.10.0.1-cp1.jar  com.expedia.content.media.processing.pipeline.tool.ScanDynamoAll -totalSegment 5 -segment 4 -limit 500 -environment stress -bucketName ewe-cs-media-test -dynamoEndpoint "https://dynamodb.us-west-2.amazonaws.com" > mig.log &
+  
+  
+  
+  0508:
+  
+  nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.ImageReprocess 
+  
+    nohup /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.ScanDynamoAll -totalSegment 5 -segment 0 -limit 500 -environment prod -bucketName ewe-cs-media-test -dynamoEndpoint "https://dynamodb.us-west-2.amazonaws.com" > mig.log &
+
+                /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId -retryTopic  cs-media-image-message-retry  -processTopic  cs-media-image-message  -fromDate 2017-05-19 > reprocess_media_0525.log
+                
+                              nohup   /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId -retryTopic  cs-media-image-derivatives-retry  -processTopic  cs-media-image-derivatives  -fromDate 2017-05-19 > reprocess_dcp_0525.log
+
+/home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar  com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId -retryTopic  cs-media-image-activity-log-retry  -processTopic  cs-media-image-activity-log  -fromDate 2017-05-19 > reprocess_dcp_0525.log
+
+cs-media-image-activity-log-retry  cs-media-image-activity-log
+
+
+0534 zookeeper , reblancing
+
+test:
+lcm-consumer-test-processor-ImageMessageStore-changelog
+
+./zookeeper-shell  10.2.68.173:2181
+rmr /admin/reassign_partitions
+
+int:
+
+./bin/kafka-reassign-partitions --zookeeper 10.2.68.173:2181 --reassignment-json-file ~/replication-int-partition.json --execute
+
+./bin/kafka-consumer-groups --describe --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80  --group mediadb-consumer-processor-int-1031
+
+
+./bin/kafka-consumer-groups --describe --group mediadb-consumer-processor-stress  --bootstrap-server 10.2.90.76:9092 
+./bin/kafka-consumer-groups  --group lcm-consumer-stress-partition-0526  --bootstrap-server 10.2.90.76:9092  --describe
+
+./bin/kafka-consumer-groups --describe --group lcm-consumer-test-processor-0526  --bootstrap-server 10.2.90.76:9092
+
+prod consuemr status:
+
+./bin/kafka-consumer-groups --describe --group lcm-consumer-test-processor-0609  --bootstrap-server 10.2.90.76:9092
+
+./bin/kafka-consumer-groups --describe --group lcm-consumer-prod-1  --bootstrap-server 10.9.35.5:9092
+
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --topic lcm-image-collection-test-retry --describe 
+
+./bin/kafka-topics --zookeeper 10.9.39.85:2181 --topic cs-media-image-activity-log --describe 
+
+
+alter retention period:
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --alter --topic lcm-consumer-stress-partition-0526-CollectionMessageStore-changelog --config retention.ms=100000000
+
+./bin/kafka-consumer-groups --describe --group mediadb-consumer-processor-int-1031  --bootstrap-server cs-confluent-platform-kafka.test.expedia.com:80 
+
+
+0623
+
+./bin/kafka-streams-application-reset.sh --application-id lcm-consumer-prod --zookeeper 10.9.39.85:2181 --bootstrap-servers 10.9.35.5:9092,10.9.34.206:9092,10.9.37.87:9092,10.9.38.234:9092
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --alter --topic lcm-consumer-stress-partition-0526-DerivativeMessageStore-changelog --config retention.ms=100000000
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --alter --topic lcm-consumer-stress-partition-0526-FingerprintMessageStore-changelog --config retention.ms=100000000
+./bin/kafka-topics --zookeeper 10.2.68.173:2181 --alter --topic lcm-consumer-stress-partition-0526-ImageMessageStore-changelog --config retention.ms=100000000
+
+
+list topic by zookeeper
+
+ ./bin/kafka-topics --zookeeper 10.2.68.173:2181 --list  --topic
+
+
+create topic with partition
+./bin/kafka-topics --zookeeper 10.2.90.36:2181 --create --topic image-derivative-created-stress2 --partitions 32 --replication-factor 3 --config cleanup.policy=compact
+./bin/kafka-topics --zookeeper 10.2.90.36:2181 --create --topic image-derivative-created-stress2 --partitions 32 --replication-factor 3 --config cleanup.policy=compact
+
+
+
+reassing partition
+
+./bin/kafka-reassign-partitions --zookeeper 10.2.68.173:2181 --reassignment-json-file ~/replication-int-partition.json --execute
+
+
+
+
+0718
+
+./bin/kafka-topics --zookeeper cs-confluent-platform-zookeeper.test.expedia.com:80 --list|grep lcm-change-media-stress
+
+./bin/kafka-topics --zookeeper cs-confluent-platform-zookeeper.test.expedia.com:80 --create --topic lcm-image-derivative-created-retry --partitions 32 --replication-factor 3 --config cleanup.policy=compact
+
+
+prod:     derivativeMessageCreatedRetryTopic: cs-image-message-derivative-created-retry??
+
+
+0726
+
+prod log
+"message sent to" topic=cs-media-lcm-change-catalog-item message=[{"SYS_CHANGE_VERSION": 5309264151, "SYS_CHANGE_CREATION_VERSION": null, "SYS_CHANGE_OPERATION": "U", "SYS_CHANGE_COLUMNS": {"bytes": "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"}, "SYS_CHANGE_CONTEXT": null, "CatalogItemID": 18413210}]
+
+Lmc sync issue fix:
+
+
+ ./bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.test.expedia.com:80 --topic lcm-change-catalog-item-stress --compression-codec snappy --property schema.registry.url=http://10.2.90.149:8081 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_OPERATION","type":["null","string"]},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"]},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"]},{"name":"CatalogItemID","type":"int"}]}' < /Users/seli/Desktop/t.txt
+
+
+{"SYS_CHANGE_VERSION":{"long":1},"SYS_CHANGE_CREATION_VERSION":null,"SYS_CHANGE_OPERATION":{"string":"U"},"SYS_CHANGE_COLUMNS":{"bytes":"\u0000\u0000\u0000\u0000\u0003\u0000\u0000\u0000\u0005\u0000\u0000\u0000\u0004\u0000\u0000\u0000"},"SYS_CHANGE_CONTEXT":null,"CatalogItemID":949011}
+
+
+
+prod:
+reprocess mediaID that lost by LCM-Sync, 
+1)get the id by sql:
+select SKUGroupCatalogItemID from skugroup  where updateDate between '2017-07-21' and '2017-07-25'
+select  RoomTypeCatalogitemid from roomType  where updateDate between '2017-07-21' and '2017-07-25'
+2) save the result as list file
+
+http://10.9.53.139:8081,http://10.9.52.31:8081,http://10.9.58.19:8081
+3) run the cmd with the filelist as input.
+hotel
+ ./bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.prod-p.expedia.com:80 --topic lcm-change-catalog-item --compression-codec snappy --property schema.registry.url=http://10.9.56.76:8081 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"]},{"name":"SYS_CHANGE_OPERATION","type":["null","string"]},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"]},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"]},{"name":"CatalogItemID","type":"int"}]}' < /home/seli/lcmSync/t.txt
+   media
+    ./bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.prod-p.expedia.com:80 --topic cs-media-lcm-change-media --compression-codec snappy --property schema.registry.url=http://10.9.56.76:8081 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"],"default":null},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"],"default":null},{"name":"SYS_CHANGE_OPERATION","type":["null","string"],"default":null},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"],"default":null},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"],"default":null},{"name":"MediaID","type":"int"}]}' </home/seli/lcmSync/tt.txt
+    ./bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.test.expedia.com:80 --topic cs-media-lcm-change-media-stress --compression-codec snappy --property schema.registry.url=http://10.2.90.149:8081 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"],"default":null},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"],"default":null},{"name":"SYS_CHANGE_OPERATION","type":["null","string"],"default":null},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"],"default":null},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"],"default":null},{"name":"MediaID","type":"int"}]}' </tmp/tt.txt    
+    /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar com.expedia.content.media.processing.pipeline.tool.ScanDynamoByGuidList > reprocess0720.log
+
+
+4)
+conector:
+curl -X POST http://10.9.36.167:8083/connectors/cs-media-lcm-change-room-3pi/restart
+
+curl -X POST http://10.2.91.11:8083/connectors/lcm-change-media-stress/restart
+
+
+curl -X POST http://cs-confluent-platform-connect.test.expedia.com/connectors/lcm-change-media-stress/restart
+
+0803 step to process MediaID not exist
+
+[2:57 PM] Andre Caron: Fixing LcmMediaSyncStreamProcessor Media Warning!
+[2:57 PM] Andre Caron: Splunk
+[2:57 PM] Andre Caron: index=app sourcetype="media-mdb-lcm-sync-service" LCM media not found in Media DB for LCM media-id | table media_id
+[2:57 PM] Andre Caron: export to file
+[2:58 PM] Andre Caron: SQL Server
+[2:58 PM] Andre Caron: Query
+
+
+SELECT [MediaID]
+      ,[MediaGUID]
+      ,[UpdateDate]
+      ,[LastUpdatedBy]
+  FROM [LCM_Snapshot].[dbo].[MediaGUID]
+  where mediaid in (<file content>)
+  
+  {"SYS_CHANGE_VERSION":{"long":1},"SYS_CHANGE_CREATION_VERSION":null,"SYS_CHANGE_OPERATION":{"string":"U"},"SYS_CHANGE_COLUMNS":null,"SYS_CHANGE_CONTEXT":null,"MediaID":XXX}
+  
+  
+  
+  from utility box
+  /opt/kafka/confluent-oss-3.1.1-2.11/confluent-3.1.1/bin/kafka-avro-console-producer --broker-list cs-confluent-platform-kafka.prod-p.expedia.com:80 --topic cs-media-lcm-change-media --compression-codec snappy --property schema.registry.url=http://10.9.56.120:8081 --property value.schema='{"type":"record","name":"ConnectDefault","namespace":"io.confluent.connect.avro","fields":[{"name":"SYS_CHANGE_VERSION","type":["null","long"],"default":null},{"name":"SYS_CHANGE_CREATION_VERSION","type":["null","long"],"default":null},{"name":"SYS_CHANGE_OPERATION","type":["null","string"],"default":null},{"name":"SYS_CHANGE_COLUMNS","type":["null","bytes"],"default":null},{"name":"SYS_CHANGE_CONTEXT","type":["null","bytes"],"default":null},{"name":"MediaID","type":"int"}]}' < media-id.csv
+  
+  csv file contain the mediaID.
+  
+  
+  ./bin/kafka-topics --zookeeper 10.2.68.173:2181 --topic image-derivative-created-test --describe
+  
+  0807 check DB
+  
+  SELECT guid FROM csmediamediadbprod.media
+where status is null or `status` = 'RECEIVED' and `update-date` < '<a few minutes ago>' order by `update-date` desc;
+
+
+SELECT * FROM csmediamediadbprod.media
+where `status` = 'DERIVATIVES_CREATED'  and `derivatives` is not null  and `update-date` < '2017-08-09 18:53:13.542' order by `update-date` desc;
+
+
+
+select guid, status from csmediamediadbprod.media where (`file-size` is null or `domain-fields` is null or `fingerprints` is null or `derivatives` is null) and `update-date` between '2017-05-15' and '2017-05-20' and `client-id` !='LCMMigrationScript'  
+
+
+
+0831
+
+./bin/kafka-consumer-groups --bootstrap-server  cs-confluent-platform-kafka.test.expedia.com:80 --group  published-media-processor-stress  --reset-offsets --to-latest --all-topics  —execute
+
+
+./bin/kafka-topics --zookeeper 10.2.89.233:2181 --alter --topic image-derivative-created-stress2 --config retention.ms=1000
+
+./bin/kafka-consumer-groups --bootstrap-server  cs-confluent-platform-kafka.test.expedia.com:80 --group  mediadb-consumer-processor-int  --reset-offsets --to-offset  6372250 --topic image-activity-log-int —execute
+
+ 
+ 0919
+ ./bin/kafka-consumer-groups --bootstrap-server cs-confluent-platform-kafka.prod-p.expedia.com:80 --group lodging-adapter-prod-p-7 --reset-offsets  --topic cs-media-image-published --to-offset 0  --execute
+ 
+ 
+ seli      1225     1  0 Aug31 ?        01:35:55 /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0831ab -retryTopic cs-media-lcm-image-derivative-created-retry -processTopic cs-media-image-derivative-created -fromDate 2017-08-31
+seli      4554     1  1 Sep08 ?        04:06:22 /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar com.expedia.content.media.processing.pipeline.tool.ScanDynamoToUpdateStatus -totalSegment 5 -segment 0 -limit 500 -environment prod -bucketName ewe-cs-media-test -dynamoEndpoint https://dynamodb.us-west-2.amazonaws.com
+seli     22913 19956  0 02:23 pts/1    00:00:00 grep --color=auto media-comm
+seli     31233     1  0 Aug31 ?        01:15:38 /home/seli/jdk1.8.0_121/jre/bin/java -cp media-commons.jar:spring-web-4.1.7.RELEASE.jar com.expedia.content.media.processing.pipeline.tool.KafkaImageReprocessor -applicationId groupdId0817cdmm -retryTopic cs-media-lcm-image-message-retry -processTopic cs-media-image-message -fromDate 2017-08-31
+seli     32283     1  0 Aug15 ?        00:29:42 /home/seli/jdk1.8.0_121/bin/java -cp media-commons.jar com.expedia.content.media.processing.pipeline.tool.KafkaLagMonitor prod /home/seli/confluent-3.1.2/
+
+
+ load data inpath '/home/hadoop/full_text.txt'  overwrite into table twitter.full_text;
+    
+    
+ ./bin/spark-submit --class com.spark.example.JavaKafkaWordCount --master spark://localhost:7077 --num-executors 3  --executor-cores 1 /tmp/mySparkTest.jar 10
+ 
+ 
+ 
+  bin/spark-submit --jars \
+      spark-streaming-kafka_2.10-1.6.1.jar  \
+      examples/src/main/python/streaming/kafka_wordcount.py \
+      10.2.88.105:2181  imageMessageTest
+      
+  bin/spark-submit --jars \
+      external/kafka-assembly/target/scala-*/spark-streaming-kafka-assembly-*.jar \
+      examples/src/main/python/streaming/kafka_wordcount.py \
+      10.2.88.105:2181  imageMessageTest    
+ 
+ 
+ nohup /home/seli/jdk1.8.0_121/bin/java -classpath /home/seli/Apps/db-derby-10.11.1.1-bin/lib/derby.jar:/home/seli/Apps/db-derby-10.11.1.1-bin/lib/derbynet.jar:/home/seli/Apps/db-derby-10.11.1.1-bin/lib/derbytools.jar:/home/seli/Apps/db-derby-10.11.1.1-bin/lib/derbyclient.jar::/usr/local/Hadoop/lib/*:.:/usr/local/hive/lib/*:.:/usr/local/Hadoop/lib/*:.:/usr/local/hive/lib/*:.:/home/seli/Apps/db-derby-10.11.1.1-bin/lib/derby.jar:/home/seli/Apps/db-derby-10.11.1.1-bin/lib/derbytools.jar org.apache.derby.drda.NetworkServerControl start -h 0.0.0.0 &
+ 
+ 
+ 
+ 
+./put_order_data_in_topic.sh ../data/order_data/ 10.2.88.105:9092 order-data
+
+ ./kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic order-one-min-data
+

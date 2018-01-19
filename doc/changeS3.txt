@@ -1,0 +1,264 @@
+http://cs-media-service.us-west-2.stress.expedia.com/media/v1/imagesbydomain/Lodging/domainId/41098
+
+http://cs-media-service.us-west-2.int.expedia.com/media/v1/imagesbydomain/Lodging/domainId/759
+
+Kz$3_123e
+
+26+10+15 50
+
+12345678
+
+curl --user EPC: -H "Content-Type: application/json" -X POST -d '{ 
+  "mediaUrl":"https://media.int.expedia.com//hotels/1000000/10000/1500/1411/92a62e42_t.jpg" 
+}' http://cs-media-service.us-west-2.stress.expedia.com/media/v1/sourceurl
+
+./configure --prefix=/usr/local --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib" make && make altinstall
+
+./configure --prefix=/usr/local --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib" make && make altinstall
+
+./configure --prefix=/usr/local make && make install
+
+aws s3api copy-object --bucket ewe-cs-media-test --content-type "image/jpg" \
+    --copy-source test/media/derivative/lodging/1000000/10000/200/123/03359660_dp.jpg --key test/test.jpg \
+    --metadata-directive "REPLACE"
+
+
+
+aws s3api copy-object  --content-type "image/jpeg"   --copy-source ewe-cs-media-test/stress/derivative/lodging/1000000/10000/100/1/w3XorjRKRn6kR9Yfb2YQ8w_e.jpg --key stress/derivative/lodging/1000000/10000/100/1/w3XorjRKRn6kR9Yfb2YQ8w_e.jpg     --bucket ewe-cs-media-test  --metadata-directive "REPLACE"
+
+aws s3api head-object   --key int/s3repo/8803_oice001.jpg  --bucket ewecs-mediaorigin-stag.int.expedia.com
+
+aws s3api head-object   --key s3repo/8103_offi_22e3.jpg \
+    --bucket ewe-cs-media-test 
+
+
+https://media.int.expedia.com/hotels/1000000/10000/200/123/0d38c82f_t.jpg
+
+aws s3 ls --recursive  s3://ewe-cs-media-test/test/media/derivative/lodging/ |awk -F " " '{print $4}'
+
+aws s3 ls --recursive  s3://ewe-cs-media-test/s3repo/ |awk -F " " '{print $4}'
+
+aws s3 ls --recursive  s3://ewecs-mediaorigin-stag.int.expedia.com/int/s3repo/ |awk -F " " '{print $4}'
+
+  feature/route-aws-higher-portrait
+
+int:
+aws s3api copy-object  --content-type "image/jpeg"   --copy-source ewecs-mediaorigin-stag.int.expedia.com/int/derivative/lodging/1000000/10000/200/123/00251991_s.jpg --key int/derivative/lodging/1000000/10000/200/123/00251991_s.jpg     --bucket ewecs-mediaorigin-stag.int.expedia.com  --metadata-directive "REPLACE"
+
+
+aws s3 ls --recursive  s3://ewecs-mediaorigin-stag.int.expedia.com/int/derivative/lodging/ |awk -F " " '{print $4}'
+
+aws s3 ls --recursive  s3://ewe-cs-media-test/test/media/derivative/lodging/ |awk -F " " '{print $4}'
+
+
+aws s3api copy-object  --content-type "image/jpeg"     --copy-source "ewe-cs-media-test/test/media/derivative/lodging/1000000/10000/200/123/03359660_dp.jpg" --key "test/media/derivative/lodging/1000000/10000/200/123/03359660_dp.jpg"     --bucket ewe-cs-media-test  --metadata-directive "REPLACE"
+
+
+
+aws s3api copy-object  --content-type "image/jpeg"     --copy-source "ewecs-mediaorigin-stag.int.expedia.com/int/derivative/lodging/2000000/1080000/1072900/1072883/8c25ebf5_s.jpg" --key "int/derivative/lodging/2000000/1080000/1072900/1072883/8c25ebf5_s.jpg"     --bucket ewecs-mediaorigin-stag.int.expedia.com  --metadata-directive "REPLACE"
+
+
+s3://ewecs-mediaorigin.prod-p.expedia.com/media/s3repo/15802414_epc_4f1cfc21e4f242fcabaf3bca6e03b643c3VwZXJvciAoMik=_cleaned.jpg
+
+YULC02N31HPFD58:changemeta_bak seli$ aws s3 ls --recursive  s3://ewecs-mediaorigin.prod-p.expedia.com/media/s3repo|wc -l
+
+aws s3api copy-object  --content-type "image/jpeg"   --copy-source ewecs-mediaorigin.prod-p.expedia.com/media/s3repo/1052315_74810607vfml.jpg \
+--key media/s3repo/1052315_74810607vfml.jpg    --bucket ewecs-mediaorigin.prod-p.expedia.com  --metadata-directive "REPLACE"
+
+
+Prod:
+
+a208d0f8_g.jpg
+
+
+
+aws s3api copy-object  --content-type "image/jpeg"   --copy-source ewecs-mediaorigin-stag.int.expedia.com/int/derivative/lodging/1000000/10000/200/123/00251991_s.jpg --key int/derivative/lodging/1000000/10000/200/123/00251991_s.jpg     --bucket ewecs-mediaorigin-stag.int.expedia.com  --metadata-directive "REPLACE"
+
+
+
+ewecs-mediaorigin.prod-p.expedia.com
+https://images.trvl-media.com//hotels/5000000/4050000/4042700/4042606/03d8961e_w.jpg 
+
+images.trvl-media.com/hotels/lodging/5000000/4610000/4608700/4608680/0a797003_b.jpg
+
+https://images.trvl-media.com/hotels/10000000/9050000/9043500/9043416/0c0fa217_b.jpg
+aws s3api copy-object  --content-type "image/jpeg"   --copy-source ewecs-mediaorigin.prod-p.expedia.com/media/derivative/lodging/10000000/9050000/9043500/9043416/0c0fa217_y.jpg --key media/derivative/lodging/10000000/9050000/9043500/9043416/0c0fa217_y.jpg    --bucket ewecs-mediaorigin.prod-p.expedia.com  --metadata-directive "REPLACE"
+
+media/derivative/lodging/1000000/10000/100/
+https://images.trvl-media.com/hotels/8000000/7780000/7772000/7771953/a208d0f8_g.jpg
+
+aws s3 ls --recursive  s3://ewecs-mediaorigin.prod-p.expedia.com/media/derivative/lodging/
+aws s3 ls --recursive  s3://ewecs-mediaorigin.prod-p.expedia.com/media/s3repo
+
+aws s3api head-object   --key media/s3repo/15766565_epc_7f84a16231c14ae5b8942da92280722dRFNDXzAwMjg=_cleaned.jpg  \
+    --bucket ewecs-mediaorigin.prod-p.expedia.com
+
+
+s3://ewecs-mediaorigin.prod-p.expedia.com/media/derivative/lodging/1000000/10000/100/100
+
+aws s3api head-object   --key media/s3repo/1101450_dreamers3160601084140_hotfolders.jpg  \
+    --bucket ewecs-mediaorigin.prod-p.expedia.com
+
+
+bucket: ewecs-mediaorigin.prod-p.expedia.com
+
+media/derivative/logding/
+
+https://images.trvl-media.com/hotels/16000000/15770000/15761700/15761692/32184e86_d.jpg
+https://images.trvl-media.com/hotels/16000000/15770000/15761700/15761692/d20cc700_d.jpg
+aws s3 ls s3://ewecs-mediaorigin.us-west-2.prod-p.expedia.com/media/source/lodging/5000000/4050000/4042700/4042606/
+
+
+aws s3 cp sqlGuidOutPut_0_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_0_prod.csv
+aws s3 cp sqlGuidOutPut_1_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_1_prod.csv
+aws s3 cp sqlGuidOutPut_2_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_2_prod.csv
+aws s3 cp sqlGuidOutPut_3_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_3_prod.csv
+aws s3 cp sqlGuidOutPut_4_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_4_prod.csv
+
+
+
+aws s3 cp sqlGuidOutPut_20_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_20_prod.csv
+aws s3 cp sqlGuidOutPut_21_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_21_prod.csv
+aws s3 cp sqlGuidOutPut_22_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_22_prod.csv
+aws s3 cp sqlGuidOutPut_23_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_23_prod.csv
+aws s3 cp sqlGuidOutPut_24_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_24_prod.csv
+aws s3 cp sqlGuidOutPut_25_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_25_prod.csv
+aws s3 cp sqlGuidOutPut_26_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_26_prod.csv
+aws s3 cp sqlGuidOutPut_27_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_27_prod.csv
+aws s3 cp sqlGuidOutPut_28_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_28_prod.csv
+aws s3 rm  s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_0_prod.csv
+
+
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/source/lodging/1000000/30000/26100/26082/26082_1.jpg
+
+
+<a href="//images.trvl-media.com/hotels/4000000/3260000/3257900/3257826/3257826_117_n.jpg" data-media-type="image" data-srcset="//images.trvl-media.com/hotels/4000000/3260000/3257900/3257826/3257826_117_z.jpg, //images.trvl-media.com/hotels/4000000/3260000/3257900/3257826/3257826_117_y.jpg 500w, //images.trvl-media.com/hotels/4000000/3260000/3257900/3257826/3257826_117_b.jpg 350w" data-downgrade="true">
+                 <img src="//images.trvl-media.com/hotels/4000000/3260000/3257900/3257826/3257826_117_n.jpg" alt="Showing item 2 of 50. room image">
+               </a>
+
+
+
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/derivative/lodging/1000000/920000/915500/915423/915423_24_b.jpg
+
+
+ 6610125_19_d.jpg,6610125,/hotels/7000000/6620000/6610200/6610125
+
+http://media.expedia.com/hotels/1000000/530000/522300/522220/522220_391_z.jpg
+
+
+s3://ewecs-mediaorigin.prod-p.expedia.com/media/source/lodging/2000000/1360000/1356200/1356194/
+
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/source/lodging/12000000/11530000/11529300/11529298/11529298_71.jpg
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/derivative/lodging/3000000/2960000/2950200/2950121/2950121_49_b.jpg
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/derivative/lodging/9000000/8100000/8099500/8099448/8099448_21_y.jpg
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/derivative/lodging/10000000/9550000/9548600/9548526/9548526_5_z.jpg
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/derivative/lodging/1000000/10000/10000/9921/9921_326_w.jpg
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key media/derivative/lodging/1000000/530000/522300/522220/522220_391_z.jpg
+
+aws s3 ls  s3://ewe-cs-media-test/test/source/lodging/1000000/10000/900/900/
+
+aws s3 ls s3://ewecs-mediaorigin.prod-p.expedia.com/media/source/lodging/1000000/910000/901000/900985/
+
+aws s3api head-object --bucket ewecs-mediaorigin.prod-p.expedia.com --key  media/derivative/lodging/1000000/20000/12800/12780/6a82d592_d.jpg
+
+aws s3 cp sqlGuidOutPut_18_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_18_prod.csv
+aws s3 cp sqlGuidOutPut_19_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/media/derivative/lodging/1000000/20000/12800/12780/6a82d592_d.jpg
+
+
+aws s3 cp sqlGuidOutPut_6_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/media/derivative/lodging/1000000/580000/578900/578873/578873_2_e.jpg
+aws s3 cp sqlGuidOutPut_6_prod.csv s3://ewecs-mediaorigin.prod-p.expedia.com/guidfile/sqlGuidOutPut_6_prod.csv
+aws s3 ls --recursive  s3://ewecs-mediaorigin.prod-p.expedia.com/media/source/lodging/
+
+select top 10  dbo.MediaPath(mpl.SKUGroupCatalogItemID)+'/'+mf.MediaFileName
+from mediaProcessLog mpl
+join media m on mpl.MediaFileName=m.ContentProviderMediaName and mpl.ActivityType ='RouteToAWS'  and m.StatusCode ='A'
+join mediafilename mf on mf.mediaid=m.mediaid 
+where mpl.MediaFileName = '14919776_epc_069d0b9e3d8642b9af4e645574a6d39bQWNhbGFfRXh0ZXJpb3JfMSgxKQ==_cleaned.jpg'
+
+ {"clientId":"Media Cloud Router","userId":"media-cloud-router","requestId":"b4e91f5f-5df6-4e94-abe6-c710b4d7730a","mediaGuid":"04903b4e-c5b2-499c-814c-7e2c7006bc6a","fileUrl":"s3:\/\/ewecs-mediaorigin-stag.int.expedia.com\/int\/s3repo\/8492274_13_00111ice.jpg","fileName":"8492274_13_00111ice.jpg","rotation":null,"active":"true","generateThumbnail":"false","genOutput":null,"sourceUrl":"s3:\/\/ewecs-mediaorigin-stag.int.expedia.com\/int\/source\/lodging\/\/9000000\/8500000\/8492300\/8492274\/04903b4e-c5b2-499c-814c-7e2c7006bc6a.jpeg","rejectedOutput":null,"callback":null,"comment":null,"hidden":false,"domain":"Lodging","domainId":"8492274","domainProvider":"ICE Portal","domainDerivativeCategory":null,"domainFields":{},"fingerprints":[{"values":["0110010101100010110001001111011101100001101101100"],"algorithm":"pHash"},{"values":["46A93891955407CC0CB2490F4BA8D9E40FAB0C93"],"algorithm":"SHA1"}],"derivatives":[{"fileSize":24863,"width":350,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_b.jpg","type":"b","height":220},{"fileSize":11712,"width":255,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_l.jpg","type":"l","height":144},{"fileSize":8366,"width":200,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_s.jpg","type":"s","height":125},{"fileSize":2404,"width":70,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_t.jpg","type":"t","height":70},{"fileSize":5446,"width":160,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_e.jpg","type":"e","height":90},{"fileSize":3247,"width":90,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_n.jpg","type":"n","height":90},{"fileSize":7087,"width":140,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_g.jpg","type":"g","height":140},{"fileSize":11634,"width":180,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_d.jpg","type":"d","height":180},{"fileSize":49174,"width":500,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_y.jpg","type":"y","height":314},{"fileSize":172573,"width":1000,"location":"s3:\/\/ewe-cs-media-test\/test\/derivative\/lodging\/9000000\/8500000\/8492300\/8492274\/04903b4e_z.jpg","type":"z","height":629}],"fileSize":172541,"width":1000,"height":629,"metadataDetails":{"Artifacts:filename":"\/tmp\/work-folder-3181794011927916723\/04903b4e-c5b2-499c-814c-7e2c7006bc6a.jpg","Artifacts:verbose":"true","Background color":"white","Border color":"srgb(223,223,223)","Channel depth:blue":"8-bit","Channel depth:green":"8-bit","Channel depth:red":"8-bit","Channel statistics:Blue:entropy":"0.931577","Channel statistics:Blue:kurtosis":"0.321069","Channel statistics:Blue:max":"255 (1)","Channel statistics:Blue:mean":"83.9034 (0.329033)","Channel statistics:Blue:min":"0 (0)","Channel statistics:Blue:skewness":"0.530258","Channel statistics:Blue:standard deviation":"46.8339 (0.183662)","Channel statistics:Green:entropy":"0.945096","Channel statistics:Green:kurtosis":"-0.373718","Channel statistics:Green:max":"255 (1)","Channel statistics:Green:mean":"91.9259 (0.360494)","Channel statistics:Green:min":"0 (0)","Channel statistics:Green:skewness":"0.211543","Channel statistics:Green:standard deviation":"49.7592 (0.195134)","Channel statistics:Pixels":"629000","Channel statistics:Red:entropy":"0.965437","Channel statistics:Red:kurtosis":"-0.604389","Channel statistics:Red:max":"255 (1)","Channel statistics:Red:mean":"112.614 (0.441624)","Channel statistics:Red:min":"0 (0)","Channel statistics:Red:skewness":"-0.0821664","Channel statistics:Red:standard deviation":"56.8414 (0.222907)","Chromaticity:blue primary":"(0.15,0.06)","Chromaticity:green primary":"(0.3,0.6)","Chromaticity:red primary":"(0.64,0.33)","Chromaticity:white point":"(0.3127,0.329)","Class":"DirectClass","Colorspace":"sRGB","Compose":"Over","Compression":"JPEG","Depth":"8-bit","Dispose":"Undefined","Elapsed time":"0:01.000","Endianess":"Undefined","Filesize":"173KB","Format":"JPEG (Joint Photographic Experts Group JFIF format)","Gamma":"0.454545","Geometry":"1000x629+0+0","Height":"629","Image":"\/tmp\/work-folder-3181794011927916723\/04903b4e-c5b2-499c-814c-7e2c7006bc6a.jpg","Image statistics:Overall:entropy":"0.94737","Image statistics:Overall:kurtosis":"-0.0884763","Image statistics:Overall:max":"255 (1)","Image statistics:Overall:mean":"96.1478 (0.37705)","Image statistics:Overall:min":"0 (0)","Image statistics:Overall:skewness":"0.285312","Image statistics:Overall:standard deviation":"51.3171 (0.201243)","Intensity":"Undefined","Interlace":"None","Iterations":"0","Matte color":"grey74","Mime type":"image\/jpeg","Number pixels":"629K","Orientation":"TopLeft","Page geometry":"1000x629+0+0","PageGeometry":"1000x629+0+0","PageHeight":"629","PageWidth":"1000","Pixels per second":"629GB","Print size":"13.8889x8.73611","Profiles:Profile-exif":"96 bytes","Properties:date:create":"2016-05-04T14:03:16+00:00","Properties:date:modify":"2016-05-04T14:03:16+00:00","Properties:exif:Orientation":"1","Properties:exif:ResolutionUnit":"2","Properties:exif:XResolution":"72\/1","Properties:exif:YCbCrPositioning":"1","Properties:exif:YResolution":"72\/1","Properties:jpeg:colorspace":"2","Properties:jpeg:sampling-factor":"1x1,1x1,1x1","Properties:signature":"33b240849287ef9422f4842c71e2f6f61b124f958c8e43a79bee783ec4da9dda","Quality":"80","Rendering intent":"Perceptual","Resolution":"72x72","Tainted":"False","Transparent color":"black","Type":"TrueColor","Units":"PixelsPerInch","User time":"0.000u","Version":"ImageMagick 6.9.1-1 Q8 x86_64 2015-04-17 http:\/\/www.imagemagick.org","Width":"1000"}}
+ 
+ 16000000/15840000/15835600/15835585/
+ 
+ 
+ curl -o file.jpg --user 'GSO Media Tools': -H "Content-Type: application/json" -X POST -d '{  
+ "mediaUrl":"s3://ewe-cs-media-test/test/source/lodging/1000000/20000/13500/13473/e5992e20-3100-4f97-8693-5b6111913be7.jpg"
+}'  http://localhost:8080/media/v1/sourceimage
+
+
+s3://ewecs-mediaorigin.us-west-2.prod-p.expedia.com/media/source/lodging/2000000/1270000/1265500/1265400/
+
+https://images.trvl-media.com/hotels/11000000/10930000/10924400/10924335/10924335_39_w.jpg
+https://images.trvl-media.com/hotels/12000000/11030000/11022400/11022389/11022389_31_w.jpg
+
+aws s3 ls s3://ewecs-mediaorigin.us-west-2.prod-p.expedia.com/media/derivative/lodging/17000000/16550000/16549100/16549024/bff0946d_y.jpg
+https://images.trvl-media.com/hotels/17000000/16550000/16549jpg0/16549024/bff0946d_y.jpg
+/hotels/17000000/16550000/16549100/16549024
+
+
+media/source/lodging/11000000/10440000/10430400/10430311 876e5d84-2bb8-4086-a0ac-ec440a528500.jpg
+
+ curl -o sourceImage.jpg --user 'GSO Media Tools': -H "Content-Type: application/json" -X POST -d '{  
+ "mediaUrl":"s3://ewecs-mediaorigin-stag.int.expedia.com/int/source/lodging/1000000/980000/977400/977386/33ddd059-7f8d-4309-ac31-af75c441fe1a.jpg"
+}'   http://cs-media-service.us-west-2.test.expedia.com/media/v1/sourceimage
+
+
+
+
+DECLARE @Counter INT
+DECLARE @MaxOscars INT
+SET @Counter = 0
+SET @MaxOscars =10000
+
+WHILE @Counter <= @MaxOscars
+BEGIN
+SET @Counter += 1
+print 'here'
+update media set mediacommenttxt ='test' where  mediaid = 19672596
+END
+
+
+
+demo:
+
+http://cs-media-service.us-west-2.int.expedia.com/media/v1/images/01933ea6-4aed-452a-8be0-67327f5ae4b6
+
+https://media.int.expedia.com/hotels/1000000/50000/41100/41098/01933ea6_t.jpg  
+
+
+
+ python read_queue.py 	https://sqs.us-west-1.amazonaws.com/308506315341/ewe-cs-media-collector-dl-prod --records 20000
+ 
+ python read_queue.py 	https://sqs.us-west-1.amazonaws.com/111248436868/ewe-cs-media-process-log-dl-prod --records 1
+
+/Users/seli/code/repo/media-processing-pipeline/script/sqstool/write_queue.py "testlist" "https://sqs.us-west-1.amazonaws.com/308506315341/ewe-cs-media-collector-prod" --region "us-west-1" 
+
+
+aws dynamodb update-table --table-name cs-mediadb-MediaProcessLog --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+
+/Users/seli/code/repo/media-processing-pipeline/script/sqstool/read_queue.py  https://sqs.us-west-2.amazonaws.com/308506315341/ewe-cs-media-data-dl-prod --region "us-west-2"  --records 10000  >message.list
+
+aws sqs purge-queue --queue-url https://sqs.us-west-2.amazonaws.com/408096535527/ewe-cs-media-data-publish-stress --region "us-west-2"  
+
+
+aws sqs purge-queue --queue-url https://sqs.us-west-2.amazonaws.com/408096535527/ewe-cs-media-dcp-int --region "us-west-2"  
+
+
+aws sqs purge-queue --queue-url 	https://sqs.us-west-2.amazonaws.com/308506315341/ewe-cs-media-data-prod
+
+aws sqs purge-queue --queue-url 	https://sqs.us-west-2.amazonaws.com/408096535527/ewe-cs-media-data
+
+
+java -cp domain.jar com.expedia.content.media.processing.pipeline.tools.GenerateGuidFromDynamo 30 2 500 prod s3://ewecs-mediaorigin.prod-p.expedia.com/ guid/file/ https://dynamodb.us-west-2.amazonaws.com 2017-01-04-16:32:02
+
+java -cp domain.jar com.expedia.content.media.processing.pipeline.tools.GetGuidByMediaId /tmp/MediaIDwithMultipleGUID.txt
+
+
+aws sqs purge-queue --queue-url https://sqs.us-west-2.amazonaws.com/111248436868/ewe-cs-media-process-log-dl-prod
+
+
+0705
+
+//read msg from queue at the same time remove it.
+ python /Users/seli/code/repo/media-processing-pipeline/script/sqstool/read_queue.py https://sqs.us-west-2.amazonaws.com/308506315341/ewe-cs-media-data-prod  --remove >> messageListAll
+/Users/seli/code/repo/media-processing-pipeline/script/sqstool/write_queue.py "messageListAll" "https://sqs.us-west-2.amazonaws.com/308506315341/ewe-cs-media-data-prod" --region "us-west-2"
+
