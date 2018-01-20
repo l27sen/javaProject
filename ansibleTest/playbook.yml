@@ -1,0 +1,8 @@
+# playbook.yml
+---
+- hosts: 10.2.12.74
+  sudo: yes
+
+  tasks:
+  - name: Copy file
+    copy: src=./spring-boot-hello-world.jar dest=/tmp/spring-boot-hello-world.jar owner=mpp group=mpp mode=755

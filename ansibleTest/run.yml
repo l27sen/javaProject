@@ -1,0 +1,8 @@
+# run.yml
+---
+- hosts: 10.2.24.158 
+  sudo: yes
+
+  tasks:
+  - name : Execute script
+    command : 'java -cp /tmp/spring-boot-hello-world.jar  com.springboot.hello.Application'
