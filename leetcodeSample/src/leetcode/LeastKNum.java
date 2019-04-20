@@ -48,7 +48,7 @@ public class LeastKNum {
         //partition value in each round
         int tmp = input[start];
         while (start < end) {
-            //find right vaule smaller than partition value
+            //find right value smaller than partition value
             while (start < end && input[end] >= tmp) {
                 end--;
             }

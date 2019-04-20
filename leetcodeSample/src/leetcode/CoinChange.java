@@ -58,6 +58,7 @@ public class CoinChange {
         int ways = 0;
         //使用循环加recursive就可以遍历所有种类
         for (int count = 0; count < coinArray.length; count++) {
+            //try every amount with different coin type
             System.out.println("amount " + amount + " coin " + coinArray[count]);
             ways += combo(amount - coinArray[count]);
         }

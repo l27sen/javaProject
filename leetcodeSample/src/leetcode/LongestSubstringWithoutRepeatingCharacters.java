@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
-
+    public static void main(String[] args) {
+        lengthOfLongestSubstring("abcb");
+    }
     /**
      * 3. Longest Substring Without Repeating Characters
      * Examples:
@@ -17,7 +19,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
      * @param s
      * @return
      */
-    public int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() == 0) return 0;
         HashMap<Character, Integer> map = new HashMap<>();
         int result = 0;
