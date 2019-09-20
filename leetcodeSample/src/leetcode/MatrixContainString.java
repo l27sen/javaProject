@@ -1,5 +1,5 @@
 package leetcode;
-
+//矩阵中的路径
 public class MatrixContainString {
 
 
@@ -14,6 +14,18 @@ public class MatrixContainString {
             return false;
         }
 
+        /**
+                * 回溯搜索算法
+     * @param matrix   输入矩阵
+     * @param row      当前处理行号
+     * @param col      当前处理列好
+     * @param rows     矩阵行数
+     * @param cols     矩阵列数
+     * @param curr        已经处理str中字符串的个数
+     * @param visited  访问标记数组
+     * @param str      要搜索的字符串
+     * @return
+             */
         public boolean hasPath(char[] matrix, int rows, int cols, int row, int col, char[] str,int curr, boolean[] visit) {
             //this is the current element in the array
             int index = row*cols+col;

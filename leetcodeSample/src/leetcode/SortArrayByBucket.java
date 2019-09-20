@@ -2,12 +2,12 @@ package leetcode;
 
 public class SortArrayByBucket {
 
-    public static void sort(int[] arrray){
+    public static void sort(int[] array){
 
 
         int[] sortedArray = new int[100];
-        for(int i=0;i<arrray.length;i++){
-            sortedArray[arrray[i]] = arrray[i];
+        for(int i=0;i<array.length;i++){
+            sortedArray[array[i]] = array[i];
         }
 
         for(int j =0;j< sortedArray.length;j++){
