@@ -31,6 +31,9 @@ public class LeastKNum {
                 end = index - 1;
             }
             index = partition(input, start, end);
+
+//            int pivot = input[(start + end) / 2];
+//            index = partitionTest(input, start, end, pivot);
         }
 
         System.arraycopy(input, 0, output, 0, output.length);
@@ -64,6 +67,37 @@ public class LeastKNum {
 
         input[start] = tmp;
         return start;
+    }
+
+
+
+    private static int partitionTest(int[] array, int left, int right, int pivot) {
+
+        //pay attention, here is <=
+        while (left <= right) {
+            while (array[left] < pivot) {
+                left++;
+            }
+            while (array[right] > pivot) {
+                right--;
+            }
+            if (left <= right) {
+                swap(array, left, right);
+                left++;
+                right--;
+            }
+
+        }
+        return left;
+    }
+
+
+
+
+    private static void swap(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
     public static void main(String[] args) {
