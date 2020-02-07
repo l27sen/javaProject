@@ -11,7 +11,7 @@ import java.util.List;
 public class CombinationSum {
 
     public static void main(String[] args) {
-        int[] array = {2,3,6,7};
+        int[] array = {2, 3, 6, 7};
         combine(array, 7);
     }
 
@@ -21,6 +21,14 @@ public class CombinationSum {
         return resultList;
     }
 
+    /**
+     *
+     * @param resultList result list
+     * @param list each list that has sum value euqals target
+     * @param array
+     * @param target
+     * @param start
+     */
     public static void helper(List<List<Integer>> resultList, List<Integer> list,
                               int[] array, int target, int start) {
 

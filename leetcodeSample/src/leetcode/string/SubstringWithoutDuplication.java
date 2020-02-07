@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * same as LongestSubstringWithoutRepeatingCharacters
  * 在字符串"arabcacfr"中，最长的不含重复字符的子字符串是"acfr"，长度为4
  * 定义两个指针指向首个字符，慢指针不动，快指针先走，每走一步，判断快指针在HashSet中是否存在，不存在，存储字符信息并继续走，直到快指针 指向重复字符串；
  * 若此时快指针-慢指针>已经记录的字符串长度，更新字符串长度；
@@ -25,6 +26,7 @@ public class SubstringWithoutDuplication {
                 set.add(str.charAt(end));
             } else {
                 if (end - start > count) count = end - start;
+                //if start value not equals end, need to delete previous char, because it will start with a point after
                 while (str.charAt(start) != str.charAt(end)) {
                     set.remove(str.charAt(start));
                     start++;
@@ -33,15 +35,12 @@ public class SubstringWithoutDuplication {
             }
 
             end++;
-
-
         }
-
         if (end - start > count) count = end - start;
         return count;
     }
 
     public static void main(String a[]) {
-        System.out.println(longOfSubString("abcdbfg"));
+        System.out.println(longOfSubString("abadc"));
     }
 }

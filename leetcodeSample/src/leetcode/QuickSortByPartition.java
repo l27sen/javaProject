@@ -17,7 +17,6 @@ public class QuickSortByPartition {
         int index = partition(array, left, right, pivot);
         if (left < index - 1) {
             quick(array, left, index - 1);
-
         }
         if (index < right) {
             quick(array, index, right);

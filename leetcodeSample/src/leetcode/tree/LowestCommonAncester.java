@@ -1,6 +1,7 @@
 package leetcode.tree;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class LowestCommonAncester {
@@ -29,7 +30,8 @@ public class LowestCommonAncester {
         if (root.right != null && findPath(root.right, n, path)) {
             return true;
         }
-
+        //if can not find, remove last one
+//        path.remove(path.size() - 1);
         return false;
     }
 
@@ -41,10 +43,43 @@ public class LowestCommonAncester {
         root.left = left;
         root.right = right;
 
-        List<Integer> lefts = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
 
-        boolean findLeft = findPath(root, 3, lefts);
-        lefts.size();
+        boolean findLeft = findPath(root, 4, path);
+        path.size();
     }
+
+    //find last common node in two list
+    public static Node getLastCommonNode(List<Node> p1, List<Node> p2) {
+        Iterator<Node> ite1 = p1.iterator();
+        Iterator<Node> ite2 = p2.iterator();
+        Node last = null;
+
+        while (ite1.hasNext() && ite2.hasNext()) {
+            Node tmp = ite1.next();
+            if (tmp == ite2.next()) {
+                last = tmp;
+            }
+        }
+
+        return last;
+
+    }
+
+
+    //another way
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null) return null;
+        if(root == p) return p;
+        if(root == q) return q;
+
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+
+        if(left != null && right != null) return root;
+        return left != null ? left : right;
+    }
+
 
 }

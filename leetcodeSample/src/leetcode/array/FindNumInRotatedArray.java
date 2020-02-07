@@ -2,7 +2,7 @@ package leetcode.array;
 
 public class FindNumInRotatedArray {
     public static void main(String[] args) {
-        int[] a ={6,7,1,2,3,4,5};
+        int[] a = {6, 7, 1, 2, 3, 4, 5};
         System.out.println(minNumberRotateArray(a));
 
     }

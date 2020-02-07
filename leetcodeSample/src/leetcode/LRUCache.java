@@ -56,17 +56,17 @@ public class LRUCache {
         return node.key;
     }
 
-    public void put(String key, String value){
+    public void put(String key, String value) {
         Node node = hashMap.get(key);
-        if(node ==null){
-            if(hashMap.size()>=limit){
+        if (node == null) {
+            if (hashMap.size() >= limit) {
                 String oldKey = removeNode(head);
                 hashMap.remove(oldKey);
             }
             node = new Node(key, value);
             addNode(node);
-            hashMap.put(key,node);
-        }else{
+            hashMap.put(key, node);
+        } else {
             node.value = value;
             refreshNode(node);
         }
