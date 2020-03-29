@@ -2,35 +2,52 @@ package leetcode.array;
 
 public class SearchInsertPosition {
     public static void main(String a[]) {
-        int[] num = {1,3,4,8};
+        int[] num = {1, 3, 4, 8};
         System.out.println(search(num, 5));
     }
 
-    public static int search(int[] a, int target) {
-        int start = 0;
-        int end = a.length - 1;
-        int mid = start + (end - start) / 2;
-        while (start <= end) {
-            if (a[mid] == target) return mid;
-            //first case  3 4 5 6 0 1 2， first part is sorted
-            if (a[mid] < target) {
-              start =mid+1;
+    public static int search(int[] nums, int target) {
+        int i=0;
+        int j=nums.length-1;
+
+        while(i<=j){
+            int mid = (i+j)/2;
+
+            if(target > nums[mid]){
+                i=mid+1;
+            }else if(target < nums[mid]){
+                j=mid-1;
+            }else{
+                return mid;
             }
-            else{
-                end = mid -1;
-            }
-            mid = (start + end) / 2;
         }
-        if(start>=end){
-            return end+1;
+
+        return i;
+    }
+
+
+    int binarySearch(int arr[], int x)
+    {
+        int l = 0, r = arr.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+
+            // Check if x is present at mid
+            if (arr[m] == x)
+                return m;
+
+            // If x greater, ignore left half
+            if (arr[m] < x)
+                l = m + 1;
+
+                // If x is smaller, ignore right half
+            else
+                r = m - 1;
         }
-        if( target<=a[start]){
-            return start;
-        }else if (target<= a[end]){
-            return end;
-        }else {
-            return end+1;
-        }
+
+        // if we reach here, then element was
+        // not present
+        return -1;
     }
 
 }

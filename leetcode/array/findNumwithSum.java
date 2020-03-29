@@ -7,8 +7,6 @@ import java.util.List;
  * ｛1 、2 、4、7 、11 、15 ｝和数字15. 由于4+ 11 = 15
  */
 public class findNumwithSum {
-
-
     /*
       array is sorted
 

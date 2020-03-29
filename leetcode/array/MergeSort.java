@@ -38,18 +38,18 @@ public class MergeSort {
 
     private void mergesort(int low, int high) {
         // check if low is smaller than high, if not then the array is sorted
-        if (low < high) {
-            // Get the index of the element which is in the middle
-            int middle = low + (high - low) / 2;
-            // Sort the left side of the array
-            mergesort(low, middle);
-            // Sort the right side of the array
-            mergesort(middle + 1, high);
-            // Combine them both
-            merge(low, middle, high);
-        }
+       if(low<high){
+           int middle = low + (high - low) / 2;
+           // Sort the left side of the array
+           mergesort(low, middle);
+           // Sort the right side of the array
+           mergesort(middle + 1, high);
+           // Combine them both
+           merge(low, middle, high);
+       }
     }
 
+    //merge to two back
     private void merge(int low, int middle, int high) {
 
         // Copy both parts into the helper array

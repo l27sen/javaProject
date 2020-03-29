@@ -38,7 +38,7 @@ public class AppearOnceNumInArray {
 
         for (int i : data) {
             if (isBit1(i, indexOf1)) {
-                result[0] ^= i;
+               result[0] ^= i;
             } else {
                 result[1] ^= i;
             }
@@ -79,6 +79,7 @@ public class AppearOnceNumInArray {
 
     public static void main(String[] args) {
         int a = 2;
+        System.out.println(Integer.toBinaryString(4));
         System.out.println("first bit "+findFirstBit1(4));
         int[] data1 = {2, 4, 3, 6, 3, 2, 5, 5};
         int[] result1 = findNumbersAppearanceOnce(data1);

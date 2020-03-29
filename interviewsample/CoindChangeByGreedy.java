@@ -9,7 +9,6 @@ public class CoindChangeByGreedy {
 
     public static void findCombineArray(int amount) {
         List<Integer> result = new ArrayList<>();
-
         for (int i = coin.length - 1; i >= 0; i--) {
             while (amount >= coin[i]) {
                 amount = amount - coin[i];
@@ -20,7 +19,7 @@ public class CoindChangeByGreedy {
     }
 
     public static void main(String[] args) {
-        int n = 26;
+        int n = 23;
         //should be 10,10,5,1
         findCombineArray(n);
 

@@ -17,6 +17,19 @@ public class PalindromeList {
         int data;
         Node next;
     }
+
+    public static void main(String[] a){
+        Node head = new Node(1);
+        Node sec = new Node(2);
+        Node third = new Node(2);
+        Node forth = new Node(1);
+        head.next = sec;
+        sec.next = third;
+        third.next = forth;
+
+        System.out.println("is palindrome "+palindrome(head));
+
+    }
     public static boolean palindrome(Node head) {
         int size = calculateSize(head);
         ArrayDeque<Integer> deque = new ArrayDeque<>();

@@ -49,6 +49,7 @@ public class MyHashMap {
 
     private void add(int index, Object key, Object value) {
         //将新的entry放到table的index位置第一个，若原来有值则以链表形式存放
+        //HashMap 永远都是在链表的表头添加新元素
         HashEntry entry = new HashEntry(key, value, table[index]);
         table[index] = entry;
         //判断size是否达到临界值，若已达到则进行扩容，将table的capacicy翻倍
@@ -67,6 +68,7 @@ public class MyHashMap {
             while (old != null) {
                 HashEntry next = old.getNext();
                 int index = index(old.getKey());
+                //so if new table index already has data, then point to i
                 old.setNext(newTable[index]);
                 newTable[index] = old;
                 old = next;
@@ -149,6 +151,7 @@ public class MyHashMap {
         MyHashMap myHashMap = new MyHashMap();
 
         myHashMap.put("ad","1");
+        myHashMap.get("ad");
         myHashMap.clear();
     }
 

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class RomanToInteger {
 
-    public static void main(String[] a){
+    public static void main(String[] a) {
         System.out.println(romanToInt("IV"));
     }
 
@@ -26,22 +26,14 @@ public class RomanToInteger {
         int length = s.length();
         int result = romanValues.get(s.charAt(0));
 
-        for (int i = 1; i <= length-1; i++) {
-            if (romanValues.get(s.charAt(i)) <= romanValues.get(s.charAt(i -1 ))) {
+        for (int i = 1; i <= length - 1; i++) {
+            if (romanValues.get(s.charAt(i)) <= romanValues.get(s.charAt(i - 1))) {
                 result += romanValues.get(s.charAt(i));
             } else {
                 result -= romanValues.get(s.charAt(i));
             }
         }
 
-
-//        for (int i = length - 2; i >= 0; i--) {
-//            if (romanValues.get(s.charAt(i)) >= romanValues.get(s.charAt(i + 1))) {
-//                result += romanValues.get(s.charAt(i));
-//            } else {
-//                result -= romanValues.get(s.charAt(i));
-//            }
-//        }
 
         return result;
     }

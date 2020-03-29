@@ -8,6 +8,22 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadExcutor {
 
+    public static void main(String[] a) {
+        Runnable thread1 = () -> {
+
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Task #2 is running");
+        };
+        ThreadExcutor threadExcutor = new ThreadExcutor(2);
+        threadExcutor.exec(thread1);
+        threadExcutor.exec(thread1);
+
+    }
+
     //创建
     private volatile boolean RUNNING = true;
 
@@ -25,16 +41,16 @@ public class ThreadExcutor {
 
     boolean shutdown = false;
 
-    public ThreadExcutor(int poolSize){
+    public ThreadExcutor(int poolSize) {
         this.poolSize = poolSize;
         queue = new LinkedBlockingQueue<Runnable>(poolSize);
     }
 
     public void exec(Runnable runnable) {
         if (runnable == null) throw new NullPointerException();
-        if(coreSize < poolSize){
+        if (coreSize < poolSize) {
             addThread(runnable);
-        }else{
+        } else {
             //System.out.println("offer" +  runnable.toString() + "   " + queue.size());
             try {
                 queue.put(runnable);
@@ -44,15 +60,15 @@ public class ThreadExcutor {
         }
     }
 
-    public void addThread(Runnable runnable){
-        coreSize ++;
+    public void addThread(Runnable runnable) {
+        coreSize++;
         Worker worker = new Worker(runnable);
         workers.add(worker);
         Thread t = new Thread(worker);
         threadList.add(t);
         try {
             t.start();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -60,8 +76,8 @@ public class ThreadExcutor {
 
     public void shutdown() {
         RUNNING = false;
-        if(!workers.isEmpty()){
-            for (Worker worker : workers){
+        if (!workers.isEmpty()) {
+            for (Worker worker : workers) {
                 worker.interruptIfIdle();
             }
         }
@@ -69,16 +85,16 @@ public class ThreadExcutor {
         Thread.currentThread().interrupt();
     }
 
-    class  Worker implements Runnable{
+    class Worker implements Runnable {
 
-        public Worker(Runnable runnable){
+        public Worker(Runnable runnable) {
             queue.offer(runnable);
         }
 
         @Override
         public void run() {
-            while (true && RUNNING){
-                if(shutdown == true){
+            while (true && RUNNING) {
+                if (shutdown == true) {
                     Thread.interrupted();
                 }
                 Runnable task = null;
@@ -96,7 +112,7 @@ public class ThreadExcutor {
         }
 
         public void interruptIfIdle() {
-            for (Thread thread :threadList) {
+            for (Thread thread : threadList) {
                 System.out.println(thread.getName() + " interrupt");
                 thread.interrupt();
             }

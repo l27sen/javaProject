@@ -13,28 +13,30 @@ public class SwapNodeInPair {
         Node next;
     }
 
-    public Node reversePair(Node head){
+    public static void main(String[] a){
+        Node head = new Node(1);
+        Node sec = new Node(2);
+        Node third = new Node(3);
+        Node forth = new Node(4);
+        head.next = sec;
+        sec.next = third;
+        third.next = forth;
 
-        Node dummy = new Node(0);
-        Node l1 = dummy;
-        Node l2 = head;
+        reversePair(head);
+        head.toString();
 
-        while (l2!=null && l2.next!=null){
-            //like node '3'
-            Node nextNode = l2.next.next;
-            // first node is '2'
-            l1.next = l2.next;
-            // '2' point to '1'
-            l2.next.next = l2;
-            l2.next = nextNode;
+    }
 
-            // make l1 to '3'
-            l1 = l2;
-            l2 = l2.next;
+    public static void reversePair(Node head){
+        Node temp = head;
 
-
+        while (temp!=null && temp.next!=null){
+            int k = temp.value;
+            temp.value = temp.next.value;
+            temp.next.value = k;
+            temp = temp.next.next;
         }
-        return dummy.next;
+
 
 
     }

@@ -6,7 +6,12 @@ package leetcode;
  */
 public class MissingPositive {
 
-    public int missNumber(int[] num) {
+
+    public static void main(String[] args) {
+        int[] a={1,2,0};
+        System.out.println(missNumber(a));
+    }
+    public static int missNumber(int[] num) {
 
         for (int i = 0; i < num.length; i++) {
 
@@ -21,7 +26,7 @@ public class MissingPositive {
         //find the result for sort
         for (int i = 0; i < num.length; i++) {
             if (num[i] != i + 1) {
-                return i = 1;
+                return i ;
             }
         }
         return num.length + 1;

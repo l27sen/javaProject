@@ -1,10 +1,16 @@
 package leetcode.string;
 
+/**
+ * Single Word Palindromes
+ * Anna
+ * Civic
+ * Kayak
+ */
 public class PalindromeString {
 
     public static void main(String a[]) {
 
-        System.out.print(isPalindromeString("abba"));
+        System.out.print(isPalindromeString("abcba"));
     }
 
     //aba is true
@@ -14,7 +20,6 @@ public class PalindromeString {
         int length = str.length();
         System.out.println(length / 2);
         for (int i = 0; i < length / 2; i++) {
-
             if (str.charAt(i) != str.charAt(length - i - 1))
                 return false;
         }

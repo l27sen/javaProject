@@ -12,13 +12,23 @@ public class findRunTimeMediumElement {
     private static PriorityQueue<Integer> minHeap = new PriorityQueue<>();                           // keeps track of the LARGE numbers
 
 
+    public static void main(String[] a){
+        int[] inputArr = {45,23,11,89};
+        medianTracker(inputArr);
+    }
+
     public static void medianTracker(int [] array) {
         for (int i = 0; i < array.length; i++) {
             addNumber(array[i]);
-            System.out.println(getMedian());
         }
+        System.out.println(getMedian());
+
     }
 
+    /**
+     * add number to heap
+     * @param i
+     */
     public static  void addNumber(int i) {
         if (maxHeap.isEmpty()) {
             maxHeap.add(i);

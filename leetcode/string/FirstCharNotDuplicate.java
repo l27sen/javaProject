@@ -21,18 +21,15 @@ public class FirstCharNotDuplicate {
 
         int min = Integer.MAX_VALUE;
 
+
         int i = 0;
         for (Character c : input.toCharArray()) {
-
             if (!map.containsKey(c)) {
                 map.put(c, i);
             } else {
-                //already have
                 map.put(c, -1);
             }
-
             i++;
-
         }
 
         map.size();
@@ -40,7 +37,6 @@ public class FirstCharNotDuplicate {
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             if (entry.getValue().intValue() != -1) {
                 min = Math.min(entry.getValue(), min);
-
             }
         }
 

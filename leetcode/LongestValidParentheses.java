@@ -7,7 +7,8 @@ import java.util.Stack;
  */
 public class LongestValidParentheses {
     public static void main(String[] a) {
-        longest("(()");
+
+        System.out.println(longest("((()))"));
     }
 
     public static int longest(String input) {
@@ -19,18 +20,22 @@ public class LongestValidParentheses {
             if (input.charAt(i) == '(') {
                 stack.push(i);
             } else {
-                //if it is ')'
-                if (stack.isEmpty()) {
-                    start = i;
-                } else {
-                    stack.pop();
+                if(input.charAt(i)==')'){
                     if (stack.isEmpty()) {
-                        result = Math.max(result, i - start);
+                        start = i;
                     } else {
-                        //if still not empty "(()" case
-                        result = Math.max(result, i - stack.peek());
+                        stack.pop();
+                        if (stack.isEmpty()) {
+                            result = Math.max(result, i - start);
+                        } else {
+                            //(()
+                            result = Math.max(result, i - stack.peek());
+                        }
                     }
                 }
+
+
+
             }
         }
         return result;
