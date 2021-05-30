@@ -24,6 +24,7 @@ public class PolishNotation {
             if (!operators.contains(t)) { //push to stack if it is a number
                 stack.push(t);
             } else {
+				//every time pop two of the number from stack 
                 //pop numbers from stack if it is an operator
                 int a = Integer.valueOf(stack.pop());
                 int b = Integer.valueOf(stack.pop());
