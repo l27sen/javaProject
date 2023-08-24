@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.stream;
+package leetcodeByCategory.interviewsample.stream;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

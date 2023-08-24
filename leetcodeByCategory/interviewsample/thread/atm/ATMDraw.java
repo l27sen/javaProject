@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread.atm;
+package leetcodeByCategory.interviewsample.thread.atm;
 
 /**
  * Use ATM to draw money from account.

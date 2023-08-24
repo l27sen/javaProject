@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 // step 1, check one by  one from [0,0]
 // step 2, dfs 函数参数， array, inputString, i, j, indexLength

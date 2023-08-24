@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.map;
+package leetcodeByCategory.map;
 
 //HashMap 永远都是在链表的表头添加新元素
 

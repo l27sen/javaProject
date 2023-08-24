@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread.sequencecall;
+package leetcodeByCategory.interviewsample.thread.sequencecall;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class FooBad {

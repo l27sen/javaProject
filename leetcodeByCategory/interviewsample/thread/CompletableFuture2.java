@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread;
+package leetcodeByCategory.interviewsample.thread;
 import java.util.concurrent.CompletableFuture;
 
 //https://www.liaoxuefeng.com/wiki/1252599548343744/1306581182447650

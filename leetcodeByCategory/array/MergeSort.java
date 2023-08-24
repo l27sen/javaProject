@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 /**
  * 1) Divide the unsorted array into n partitions, each partition contains 1 element. Here the one
@@ -63,13 +63,13 @@ public class MergeSort {
     // to the original array
     while (i <= middle && j <= high) {
       if (helper[i] <= helper[j]) {
-        numbers[k] = helper[i];
-        i++;
+        numbers[k++] = helper[i++];
+//        i++;
       } else {
-        numbers[k] = helper[j];
-        j++;
+        numbers[k++] = helper[j++];
+//        j++;
       }
-      k++;
+     // k++;
     }
     // Copy the rest of the left side of the array into the target array
     while (i <= middle) {

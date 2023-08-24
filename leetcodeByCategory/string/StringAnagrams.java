@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.string;
+package leetcodeByCategory.string;
 
 /**
  * cde
@@ -37,5 +37,27 @@ public class StringAnagrams {
             result += Math.abs(a1[k] - a2[k]);
         }
         System.out.println(result);
+
+        String s = "anagram", t = "nagaram";
+        System.out.println(isAnagram(s,t));
+
+    }
+
+
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int[] counter = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            counter[s.charAt(i) - 'a']++;
+            counter[t.charAt(i) - 'a']--;
+        }
+        for (int count : counter) {
+            if (count != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

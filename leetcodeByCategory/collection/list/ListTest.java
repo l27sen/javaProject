@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.collection.list;
+package leetcodeByCategory.collection.list;
 
 import java.util.ArrayList;
 import java.util.List;

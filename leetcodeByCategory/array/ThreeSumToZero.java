@@ -1,9 +1,10 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//时间 O N平方
 public class ThreeSumToZero {
 
     public static void main(String[] args) {

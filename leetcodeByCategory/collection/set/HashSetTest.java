@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.collection.set;
+package leetcodeByCategory.collection.set;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 /**
  *
@@ -16,6 +16,8 @@ package com.scotiabank.riskmanagement.testcdoe.array;
  *  7 4 1
  *  8 5 2
  *  9 6 3
+ *
+ *  O(M) time
  */
 public class MetrixRotate {
 

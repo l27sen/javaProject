@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 //一直加， 直到 currentMax <0, then set to 0
 //then get the max.

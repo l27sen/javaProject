@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.generic;
+package leetcodeByCategory.generic;
 
 public class GenericsType<T> {
 

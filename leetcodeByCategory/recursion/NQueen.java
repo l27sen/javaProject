@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.recursion;
+package leetcodeByCategory.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;

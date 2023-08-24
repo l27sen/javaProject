@@ -1,34 +1,33 @@
-package com.scotiabank.riskmanagement.testcdoe.linkedlist;
+package leetcodeByCategory.linkedlist;
 
 
 public class RemoveDuplicateFromList {
 
   public static void main(String[] a){
 
-    ListNode listNode = new ListNode(1);
-    ListNode listNode2 = new ListNode(1);
-    ListNode listNode3 = new ListNode(2);
+    ListNode22 listNode = new ListNode22(1);
+    ListNode22 listNode2 = new ListNode22(1);
+    ListNode22 listNode3 = new ListNode22(2);
     listNode.next = listNode2;
     listNode2.next = listNode3;
 
-    ListNode noDupNode = deleteDuplicates2(listNode);
-    System.out.println(noDupNode.val);
+    ListNode22 noDupNode = deleteDuplicates2(listNode);
   }
 
   /**
    * Input: head = [1,1,2] Output: [1,2]
    * Input: head = [1,1,2,3,3] Output: [1,2,3] 思路：两个指针，向前走
    */
-  public ListNode deleteDuplicates(ListNode head) {
+  public ListNode22 deleteDuplicates(ListNode22 head) {
     if (head == null || head.next == null) {
       return head;
     }
 
-    ListNode prev = head;
-    ListNode p = head.next;
+    ListNode22 prev = head;
+    ListNode22 p = head.next;
 
     while (p != null) {
-      if (p.val == prev.val) {
+      if (p.value == prev.value) {
         //pre 没有动
         prev.next = p.next;
         p = p.next;
@@ -49,17 +48,17 @@ public class RemoveDuplicateFromList {
    * @param head
    * @return
    */
-  public static ListNode deleteDuplicates2(ListNode head) {
-    ListNode dummy = new ListNode(-1);
+  public static ListNode22 deleteDuplicates2(ListNode22 head) {
+    ListNode22 dummy = new ListNode22(-1);
     dummy.next = head;
 
 
-    ListNode current = dummy;
+    ListNode22 current = dummy;
     //from head compare, at least two node
     while (current.next != null && current.next.next != null) {
-      if (current.next.val == current.next.next.val) {
-        int dup = current.next.val;
-        while (current.next != null && current.next.val == dup) {
+      if (current.next.value == current.next.next.value) {
+        int dup = current.next.value;
+        while (current.next != null && current.next.value == dup) {
           //remove the first, then go to the next
           current.next = current.next.next;
         }

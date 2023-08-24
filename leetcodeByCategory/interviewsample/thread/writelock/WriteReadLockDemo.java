@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread.writelock;
+package leetcodeByCategory.interviewsample.thread.writelock;
 
 import java.util.ArrayList;
 import java.util.List;

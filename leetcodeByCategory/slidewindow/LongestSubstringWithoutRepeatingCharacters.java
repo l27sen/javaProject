@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.slidewindow;
+package leetcodeByCategory.slidewindow;
 
 import java.util.HashMap;
 import java.util.HashSet;

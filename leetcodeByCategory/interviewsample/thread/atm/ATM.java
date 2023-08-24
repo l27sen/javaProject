@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread.atm;
+package leetcodeByCategory.interviewsample.thread.atm;
 
 public class ATM implements Runnable {
     private double drawMoney;

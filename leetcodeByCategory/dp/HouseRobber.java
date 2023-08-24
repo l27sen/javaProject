@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.dp;
+package leetcodeByCategory.dp;
 
 /**
  * Input: nums = [1,2,3,1] Output: 4 Explanation: Rob house 1 (money = 1) and then rob house 3
@@ -30,7 +30,7 @@ public class HouseRobber {
     for (int i = 2; i < nums.length; i++) {
 
       //两种选择 i and i-2, 或者 i-1
-      dp[i] = Math.max(nums[i] + dp[2], dp[i - 1]);
+      dp[i] = Math.max(nums[i] + dp[i-2], dp[i - 1]);
     }
 
     return dp[nums.length - 1];

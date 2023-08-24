@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 /**
  * https://blog.csdn.net/zl18310999566/article/details/80271566

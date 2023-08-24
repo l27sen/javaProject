@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.other;
+package leetcodeByCategory.other;
 
 public class MyHashMap {
 

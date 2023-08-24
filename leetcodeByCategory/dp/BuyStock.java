@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.dp;
+package leetcodeByCategory.dp;
 
 public class BuyStock {
 

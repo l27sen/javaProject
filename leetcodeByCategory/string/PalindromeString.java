@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.string;
+package leetcodeByCategory.string;
 
 /**
  * Single Word Palindromes
@@ -23,6 +23,30 @@ public class PalindromeString {
             if (str.charAt(i) != str.charAt(length - i - 1))
                 return false;
         }
+        return true;
+    }
+
+    //leetcode
+
+    /**
+     * Input: s = "A man, a plan, a canal: Panama"
+     * Output: true
+     * @param s
+     * @return
+     */
+    public boolean isPalindrome(String s) {
+        for (int i = 0, j = s.length() - 1; i < j; i++, j--) {
+            while (i < j && !Character.isLetterOrDigit(s.charAt(i))) {
+                i++;
+            }
+            while (i < j && !Character.isLetterOrDigit(s.charAt(j))) {
+                j--;
+            }
+
+            if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j)))
+                return false;
+        }
+
         return true;
     }
 }

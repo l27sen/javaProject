@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread.fizzbuzz;
+package leetcodeByCategory.interviewsample.thread.fizzbuzz;
 
 public class FizzBuzzThread extends Thread  {
 

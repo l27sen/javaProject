@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.map;
+package leetcodeByCategory.map;
 
 import java.util.HashSet;
 

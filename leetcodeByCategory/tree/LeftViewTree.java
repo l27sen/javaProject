@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.tree;
+package leetcodeByCategory.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -56,6 +56,7 @@ public class LeftViewTree {
             printByLevel(root.left, level - 1);
             printByLevel(root.right, level - 1);
         }
+
 
     }
 

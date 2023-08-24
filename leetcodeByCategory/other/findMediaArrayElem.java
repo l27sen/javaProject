@@ -1,6 +1,5 @@
-package com.scotiabank.riskmanagement.testcdoe.other;
+package leetcodeByCategory.other;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.Collections;
 import java.util.PriorityQueue;

@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.greedy;
+package leetcodeByCategory.greedy;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 import java.util.*;
 //example, (1,3),)(2,4)=> (1,4)
@@ -35,10 +35,10 @@ public class MergeInterval {
       return intervals;
     }
 
-    //sort first
-    Collections.sort(intervals, Comparator.comparing((Interval itl) -> itl.start));
+   List<Interval> result = new ArrayList<>();
 
-    List<Interval> result = new ArrayList<>();
+    Collections.sort(intervals, Comparator.comparing((Interval it)->it.start));
+
     Interval t = intervals.get(0);
 
     for (int i = 1; i < intervals.size(); i++) {
@@ -48,10 +48,13 @@ public class MergeInterval {
         t.end = Math.max(t.end, c.end);
       } else {
         result.add(t);
+        //must point to next element.
         t = c;
       }
     }
+    //add the last element
     result.add(t);
+
     return result;
   }
 }

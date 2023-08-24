@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.string;
+package leetcodeByCategory.string;
 
 /**
  * Input:  s1 = "geeks", s2 = "geek" Output: yes Number of edits is 1

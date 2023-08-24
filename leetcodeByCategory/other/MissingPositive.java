@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.other;
+package leetcodeByCategory.other;
 
 /**
  * [1,2,0] -> return 3, array length is 3, then array should be {1,2,3}

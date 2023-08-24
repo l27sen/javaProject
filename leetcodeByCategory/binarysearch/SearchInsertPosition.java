@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.binarysearch;
+package leetcodeByCategory.binarysearch;
 
 public class SearchInsertPosition {
 

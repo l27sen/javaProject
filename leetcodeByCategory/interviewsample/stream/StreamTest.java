@@ -1,8 +1,7 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.stream;
+package leetcodeByCategory.interviewsample.stream;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.compress.utils.Lists;
 
 public class StreamTest {
 

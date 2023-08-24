@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.queue;
+package leetcodeByCategory.queue;
 
 import java.util.Stack;
 

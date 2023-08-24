@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.map;
+package leetcodeByCategory.map;
 
 public class YapHashMap<K, V> {
 

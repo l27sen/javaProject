@@ -1,9 +1,12 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
+/**
+ * O (N) time, for heap solution
+ */
 public class MaxNumInWindow {
 
   List<Integer> result = new ArrayList<>();

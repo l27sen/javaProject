@@ -1,10 +1,7 @@
-package com.scotiabank.riskmanagement.testcdoe.graphic;
+package leetcodeByCategory.graphic;
 
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 /**
  * start = "hit"
@@ -22,14 +19,25 @@ class WordNode {
     }
 }
 
+
+class Pair {
+    String word;
+    int numSteps;
+
+    public Pair(String word, int numSteps) {
+        this.word = word;
+        this.numSteps = numSteps;
+    }
+}
+
 public class wordladder {
 
     public static void main(String[] args) {
         String start = "hit";
         String end = "cog";
-        Set<String> wordDict = new HashSet<>(Arrays.asList("hot","dot","dog","lot","log"));
+        Set<String> wordDict = new HashSet<>(Arrays.asList("hot", "dot", "dog", "lot", "log"));
         wordladder wordladder1 = new wordladder();
-        System.out.println("result length "+wordladder1.ladderLength(start,end,wordDict));
+        System.out.println("result length " + wordladder1.ladderLength(start, end, wordDict));
     }
 
     public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
@@ -46,9 +54,9 @@ public class wordladder {
                 return top.numSteps;
             }
 
-			//current word.
+            //current word.
             char[] arr = word.toCharArray();
-			//replace every 'char' in the word
+            //replace every 'char' in the word
             for (int i = 0; i < arr.length; i++) {
                 for (char c = 'a'; c <= 'z'; c++) {
                     char temp = arr[i];
@@ -63,6 +71,61 @@ public class wordladder {
                     }
 
                     arr[i] = temp;
+                }
+            }
+        }
+
+        return 0;
+    }
+
+
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+
+        // Since all words are of same length.
+        int L = beginWord.length();
+
+        // Dictionary to hold combination of words that can be formed,
+        // from any given word. By changing one letter at a time.
+        Map<String, List<String>> allComboDict = new HashMap<>();
+
+        wordList.forEach(word -> {
+            for (int i = 0; i < L; i++) {
+                // Key is the generic word
+                // Value is a list of words which have the same intermediate generic word.
+                String newWord = word.substring(0, i) + '*' + word.substring(i + 1, L);
+                List<String> transformations = allComboDict.getOrDefault(newWord, new ArrayList<>());
+                transformations.add(word);
+                allComboDict.put(newWord, transformations);
+            }
+        });
+
+        // Queue for BFS
+        Queue<Pair> Q = new LinkedList<>();
+        Q.add(new Pair(beginWord, 1));
+
+        // Visited to make sure we don't repeat processing same word.
+        Map<String, Boolean> visited = new HashMap<>();
+        visited.put(beginWord, true);
+
+        while (!Q.isEmpty()) {
+            Pair node = Q.remove();
+            String word = node.word;
+            int level = node.numSteps;
+            for (int i = 0; i < L; i++) {
+                // Intermediate words for current word
+                String newWord = word.substring(0, i) + '*' + word.substring(i + 1, L);
+                // Next states are all the words which share the same intermediate state.
+                for (String adjacentWord : allComboDict.getOrDefault(newWord, new ArrayList<>())) {
+                    // If at any point if we find what we are looking for
+                    // i.e. the end word - we can return with the answer.
+                    if (adjacentWord.equals(endWord)) {
+                        return level + 1;
+                    }
+                    // Otherwise, add it to the BFS Queue. Also mark it visited
+                    if (!visited.containsKey(adjacentWord)) {
+                        visited.put(adjacentWord, true);
+                        Q.add(new Pair(adjacentWord, level + 1));
+                    }
                 }
             }
         }

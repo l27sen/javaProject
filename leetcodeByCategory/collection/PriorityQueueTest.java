@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.collection;
+package leetcodeByCategory.collection;
 
 import java.util.PriorityQueue;
 

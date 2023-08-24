@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.generic;
+package leetcodeByCategory.interviewsample.generic;
 
 import java.util.ArrayList;
 import java.util.List;

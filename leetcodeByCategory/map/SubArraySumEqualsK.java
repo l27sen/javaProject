@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.map;
+package leetcodeByCategory.map;
 
 import java.util.HashMap;
 
@@ -14,6 +14,7 @@ public class SubArraySumEqualsK {
     System.out.println(subarraySum(abc, 3));
   }
 
+  //prefix sum algorism
   public static int subarraySum(int[] nums, int k) {
     //存储Sum值为Key， value为出现的次数
     HashMap<Integer, Integer> map = new HashMap<>();

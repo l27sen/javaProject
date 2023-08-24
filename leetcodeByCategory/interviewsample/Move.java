@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample;
+package leetcodeByCategory.interviewsample;
 
 import java.awt.*;
 import java.awt.event.InputEvent;

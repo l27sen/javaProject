@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.other;
+package leetcodeByCategory.other;
 
 import java.util.Date;
 import java.util.LinkedList;

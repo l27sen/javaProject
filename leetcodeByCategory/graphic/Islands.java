@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.graphic;
+package leetcodeByCategory.graphic;
 
 public class Islands {
 
@@ -40,7 +40,7 @@ public class Islands {
   }
 
   // Driver method
-  public static void main(String[] args) throws java.lang.Exception {
+  public static void main(String[] args) throws Exception {
     int M[][] = new int[][]{{1, 1, 0, 0, 0},
         {1, 1, 0, 0, 1},
         {1, 0, 0, 1, 1},

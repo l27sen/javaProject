@@ -1,10 +1,10 @@
-package com.scotiabank.riskmanagement.testcdoe.linkedlist;
+package leetcodeByCategory.linkedlist;
 
 public class ReverseLinkList {
-  public static  ListNode   reverse(ListNode currentNode){
+  public static ListNode22 reverse(ListNode22 currentNode){
 
-    ListNode pre =null;
-    ListNode next = null;
+    ListNode22 pre =null;
+    ListNode22 next = null;
 
     while (currentNode!=null){
       //store the next value
@@ -18,15 +18,15 @@ public class ReverseLinkList {
 
   public static void main(String[] a){
 
-    ListNode first = new ListNode(1);
-    ListNode sec = new ListNode(2);
-    ListNode third = new ListNode(3);
+    ListNode22 first = new ListNode22(1);
+    ListNode22 sec = new ListNode22(2);
+    ListNode22 third = new ListNode22(3);
 
     first.next = sec;
     sec.next = third;
 
-    ListNode re = reverse(first);
-    System.out.println(re.val);
+    ListNode22 re = reverse(first);
+    System.out.println(re.value);
 
 
   }

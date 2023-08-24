@@ -1,11 +1,11 @@
-package com.scotiabank.riskmanagement.testcdoe.linkedlist;
+package leetcodeByCategory.linkedlist;
 
 public class LinkedListCycle {
 
-  public boolean hasCycle(ListNode node) {
+  public boolean hasCycle(ListNode22 node) {
 
-    ListNode fast = node;
-    ListNode slow = node;
+    ListNode22 fast = node;
+    ListNode22 slow = node;
 
     while (fast != null && fast.next != null) {
 
@@ -20,12 +20,12 @@ public class LinkedListCycle {
     return false;
   }
 
-  public ListNode detectCycle(ListNode head) {
+  public ListNode22 detectCycle(ListNode22 head) {
     // Find the collision point if the list has a cycle
     if (head == null) return null;
 
-    ListNode slow = head;
-    ListNode fast = head;
+    ListNode22 slow = head;
+    ListNode22 fast = head;
 
     while (fast != null && fast.next != null) {
       slow = slow.next;
@@ -53,7 +53,7 @@ public class LinkedListCycle {
 
 class ListNode {
   int val;
-  ListNode next;
+  ListNode22 next;
   public ListNode(int a){
     this.val = a;
   }

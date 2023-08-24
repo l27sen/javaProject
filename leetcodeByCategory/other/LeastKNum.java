@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.other;
+package leetcodeByCategory.other;
 //https://my.oschina.net/7001/blog/1633536
 
 /**

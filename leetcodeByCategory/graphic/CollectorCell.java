@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.graphic;
+package leetcodeByCategory.graphic;
 
 import java.util.Scanner;
 

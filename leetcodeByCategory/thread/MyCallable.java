@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.thread;
+package leetcodeByCategory.thread;
 
 import java.util.concurrent.Callable;
 

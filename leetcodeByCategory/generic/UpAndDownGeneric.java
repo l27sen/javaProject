@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.generic;
+package leetcodeByCategory.generic;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

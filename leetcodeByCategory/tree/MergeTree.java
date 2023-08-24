@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.tree;
+package leetcodeByCategory.tree;
 
 public class MergeTree {
 

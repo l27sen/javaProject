@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread;
+package leetcodeByCategory.interviewsample.thread;
 
 import java.util.concurrent.CyclicBarrier;
 

@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.tree;
+package leetcodeByCategory.tree;
 
 import java.util.ArrayList;
 

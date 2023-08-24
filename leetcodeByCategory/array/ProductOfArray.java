@@ -1,10 +1,10 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 /**
  * Input:  [1,2,3,4]
  Output: [24,12,8,6]
  except itself.
-
+思路： 两个数组，分别存左边的，右边的乘积结果
  */
 public class ProductOfArray {
 

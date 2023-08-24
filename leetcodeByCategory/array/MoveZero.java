@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.array;
+package leetcodeByCategory.array;
 
 /**
  * Input: nums = [0,1,0,3,12]
@@ -11,6 +11,20 @@ public class MoveZero {
     int[] inputArr = {0,1,0,3 ,12};
     moveZeroes(inputArr);
 
+  }
+
+  public void move(int[] num){
+    int p =0;
+    for (int i = 0; i < num.length ; i++) {
+
+      if(num[i]!=0){
+        num[p++]=num[i];
+      }
+    }
+
+    for (int i = p; i < num.length ; i++) {
+      num[i]=0;
+    }
   }
 
   public static void moveZeroes(int[] nums) {

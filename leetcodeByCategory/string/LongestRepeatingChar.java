@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.string;
+package leetcodeByCategory.string;
 
 /**
  * Input:
@@ -49,6 +49,30 @@ public class LongestRepeatingChar {
         return maxlen;
     }
 
+    //leetcode
+    //思路用 feq 存是否重复的数量，然后比较 两个指针的距离 +K
+    public static int getValue(String s, int k){
+
+        int left =0; int right = 0;
+        int[] feq = new int[26];
+        char[] ch = s.toCharArray();
+        int max = 0;
+        while (right< ch.length){
+            feq[ch[right]-'A']++;
+            max = Math.max(max, feq[ch[right]-'A']);
+            right++;
+            //重点： if the gap is bigger than the 出现次数+k，那么移动指针
+            if (right - left > max + k) {
+                //left move
+                feq[ch[left]-'A']--;
+                left++;
+            }
+
+        }
+
+    return right-left;
+    }
+
     // method which returns maximum length of substring
     static int answer(String A, int n, int k)
     {
@@ -65,7 +89,7 @@ public class LongestRepeatingChar {
     {
         int n = 5, k = 2;
         String A = "ABCABA";
-        System.out.println("Maximum length = " + answer(A, n, k));
+        System.out.println("Maximum length = " + getValue(A,  k));
 
         n = 6; k = 4;
         String B = "HHHHHH";

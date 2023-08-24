@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.filewrite;
+package leetcodeByCategory.interviewsample.filewrite;
 
 
 import java.io.*;

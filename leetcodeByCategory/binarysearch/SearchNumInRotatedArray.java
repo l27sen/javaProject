@@ -1,6 +1,6 @@
-package com.scotiabank.riskmanagement.testcdoe.binarysearch;
+package leetcodeByCategory.binarysearch;
 
-public class FindNumInRotatedArray {
+public class SearchNumInRotatedArray {
     public static void main(String[] args) {
         int[] a = {6, 7, 1, 2, 3, 4, 5};
         System.out.println(minNumberRotateArray(a));
@@ -33,40 +33,40 @@ public class FindNumInRotatedArray {
         return array[begin];
     }
 
-    public  int search(int[] a, int target){
+    public int search(int[] a, int target) {
 
-        int left =0;
-        int right = a.length -1;
-        //find the
-        while (left< right){
+        int left = 0;
+        int right = a.length - 1;
+        //find the pivot
+        while (left < right) {
 
-            int mid = left+(right-left)/2;
-            if(a[mid]>a[right]){
-                left = mid+1;
-            }else{
+            int mid = left + (right - left) / 2;
+            if (a[mid] > a[right]) {
+                left = mid + 1;
+            } else {
                 right = mid;
             }
         }
         //keep the pivot
         int start = left;
-        left =0;
-        right = a.length-1;
+        left = 0;
+        right = a.length - 1;
         //set the search point
-        if(target>=a[start] && target<= a[right]){
+        if (target >= a[start] && target <= a[right]) {
             left = start;
-        }else {
+        } else {
             right = start;
         }
 
-        while (left<=right){
-            int mid = left+(right-left)/2;
-           if(a[mid]==target){
-               return mid;
-           }else if(a[mid]> target){
-               right = mid -1;
-           }else {
-               left = mid+1;
-           }
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (a[mid] == target) {
+                return mid;
+            } else if (a[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
         }
 
         return -1;

@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.interviewsample.thread.sequencecall;
+package leetcodeByCategory.interviewsample.thread.sequencecall;
 
 public class MyThread implements Runnable{
     private String method;

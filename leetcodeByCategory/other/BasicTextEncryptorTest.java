@@ -1,4 +1,4 @@
-//package com.scotiabank.riskmanagement.testcdoe;
+package leetcodeByCategory.other;//package com.scotiabank.riskmanagement.testcdoe;
 //
 //import org.jasypt.util.text.BasicTextEncryptor;
 //

@@ -1,4 +1,4 @@
-package com.scotiabank.riskmanagement.testcdoe.other;
+package leetcodeByCategory.other;
 import java.util.*;
 import java.util.concurrent.*;
 public class CopyOnWriteArrayListExample {
