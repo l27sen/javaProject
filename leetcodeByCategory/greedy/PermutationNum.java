@@ -7,7 +7,7 @@ import java.util.List;
  * [1,2,3] have the following permutations: [ [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]
  * ]
  * <p>
- * Time complexity, what you should say in an interview: O(n⋅n!)O(n \cdot n!)O(n⋅n!)
+ * Time complexity, what you should say in an interview: O(n⋅n!)
  */
 public class PermutationNum {
 
@@ -42,6 +42,5 @@ public class PermutationNum {
             backtrack(list, tempList, nums);
             tempList.remove(tempList.size() - 1);
         }
-
     }
 }

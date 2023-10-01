@@ -1,6 +1,10 @@
 package leetcodeByCategory.tree;
 
+import com.sun.source.tree.Tree;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class LeftViewTree {
@@ -17,9 +21,9 @@ public class LeftViewTree {
         root.left.left = new TreeNode(4);
         root.left.right.left = new TreeNode(6);
         LeftViewTree leftViewTree = new LeftViewTree();
-       // leftViewTree.leftPrint(root);
+        // leftViewTree.leftPrint(root);
 
-        printRightView(root);
+        printLeftView(root);
     }
 
     private int findHeight(TreeNode aNode) {
@@ -61,8 +65,7 @@ public class LeftViewTree {
     }
 
 
-    private static void printRightView(TreeNode root)
-    {
+    private static void printLeftView(TreeNode root) {
         if (root == null)
             return;
 
@@ -87,36 +90,44 @@ public class LeftViewTree {
                     queue.add(temp.right);
             }
         }
+
     }
 
+    public List<Integer> rightSideView(TreeNode root) {
+        // reverse level traversal
+        List<Integer> result = new ArrayList();
+        Queue<TreeNode> queue = new LinkedList();
+        if (root == null) return result;
 
-
-
-
-
-
-
-
-
-
-
-
-    private static void printRightView2(TreeNode root)
-    {
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = queue.poll();
+                // 第一个元素是这一层最右边的元素
+                if (i == 0) result.add(cur.val);
+                // 相当于从右往左加入
+                if (cur.right != null) queue.offer(cur.right);
+                if (cur.left != null) queue.offer(cur.left);
+            }
+        }
+        return result;
+    }
+    private static void printRightView2(TreeNode root) {
         if (root == null)
             return;
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
 
             TreeNode node = ((LinkedList<TreeNode>) queue).pop();
             System.out.println(node.val);
-            if (node.left!=null){
+            if (node.left != null) {
                 ((LinkedList<TreeNode>) queue).push(node.left);
             }
-            if (node.right!=null){
+            if (node.right != null) {
                 ((LinkedList<TreeNode>) queue).push(node.right);
             }
         }

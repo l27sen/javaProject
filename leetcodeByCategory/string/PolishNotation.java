@@ -16,6 +16,7 @@ public class PolishNotation {
         System.out.println(evalRPN(tokens));
     }
 
+    //如果是数字，加进去，如果是符号，拿出两个数字计算，计算完，再加进去
     public static int evalRPN(String[] tokens) {
         int returnValue = 0;
         String operators = "+-*/";

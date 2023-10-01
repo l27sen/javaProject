@@ -1,9 +1,6 @@
 package leetcodeByCategory.map;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * group the anagrams together
@@ -18,6 +15,19 @@ public class GroupAnagrams {
     result.toArray();
   }
 
+
+  public List<List<String>> groupAnagramsLeetcode(String[] strs) {
+    if (strs.length == 0) return new ArrayList();
+    Map<String, List> ans = new HashMap<String, List>();
+    for (String s : strs) {
+      char[] ca = s.toCharArray();
+      Arrays.sort(ca);
+      String key = String.valueOf(ca);
+      if (!ans.containsKey(key)) ans.put(key, new ArrayList());
+      ans.get(key).add(s);
+    }
+    return new ArrayList(ans.values());
+  }
 
   public  static  List<List<String>> groupAnagrams(String[] strs) {
     List<List<String>> result = new ArrayList<List<String>>();

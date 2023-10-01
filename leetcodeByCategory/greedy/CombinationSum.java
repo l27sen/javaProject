@@ -12,7 +12,8 @@ import java.util.List;
  * 2） recursion中，用循环从0开始， 遍历各种可能
  * 3） 要 list.remove(list.size() - 1);
  *
- * n! 复杂度
+ * Let N be the number of candidates, T be the target value, and MMM be the minimal value among the candidates.
+ * O (N t/m 次方)
  */
 public class CombinationSum {
 

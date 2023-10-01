@@ -8,6 +8,7 @@ import java.util.PriorityQueue;
  * maxHeap store smaller num, 大的在最前面先出，
  * 1) size is the same, compare input the minHeap first value
  * 2) maxheap size is bigger, compare with MaxHeap first value
+ * 3) O(log n)
  */
 public class findRunTimeMediumElement {
 

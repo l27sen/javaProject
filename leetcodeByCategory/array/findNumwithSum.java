@@ -8,6 +8,12 @@ import java.util.List;
  * 方法类似二分查找
  */
 public class findNumwithSum {
+
+    public static void main(String[] args){
+        int[] inputs = {1 ,2 ,4,7,11 ,15};
+        List<Integer> results = findNumbersWithSum(inputs, 15);
+        results.size();
+    }
     /*
      array is sorted
      */

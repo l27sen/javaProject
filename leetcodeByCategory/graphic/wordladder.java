@@ -8,6 +8,8 @@ import java.util.*;
  * end = "cog"
  * dict = ["hot","dot","dog","lot","log"]
  * One shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog", the program should return its length 5.
+ *
+ * O(M2×N), where M is the length of each word and NNN is the total number of words in the input word list
  */
 class WordNode {
     String word;

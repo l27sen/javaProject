@@ -37,11 +37,11 @@ public class ArrayContainStringPath {
    * @param j
    * @param indexLength start from 0.
    * @return
+   *
+   * 思路： string 从第一个字符开始比较，如果一样，就比较周围的。
    */
-  public static boolean dfs(char[][] board, String word, int i,
-      int j, int indexLength) {
+  public static boolean dfs(char[][] board, String word, int i, int j, int indexLength) {
     int m = board.length;
-
     int n = board[0].length;
 
     //border check
@@ -51,15 +51,14 @@ public class ArrayContainStringPath {
 
     //check current char value
     if (board[i][j] == word.charAt(indexLength)) {
-      //char temp = board[i][j];
-      //board[i][j] = '*';
+      // must be inside.
       if (word.length() - 1 == indexLength) {
         return true;
       } else {
         if (dfs(board, word, i - 1, j, indexLength + 1) || dfs(board, word, i + 1, j,
-            indexLength + 1)
-            || dfs(board, word, i, j - 1, indexLength + 1) || dfs(board, word, i, j + 1,
-            indexLength + 1)) {
+                indexLength + 1)
+                || dfs(board, word, i, j - 1, indexLength + 1) || dfs(board, word, i, j + 1,
+                indexLength + 1)) {
           return true;
         }
       }

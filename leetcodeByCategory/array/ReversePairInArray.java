@@ -82,6 +82,8 @@ public class ReversePairInArray {
      * @param begin
      * @param end
      * @return
+     * 
+     * 1,3,5,7||2,4,6,8 => 3,2) (5,2) (7,2)
      */
     private static int simpleSort(int[] num, int begin, int end){
         if(begin>= end){

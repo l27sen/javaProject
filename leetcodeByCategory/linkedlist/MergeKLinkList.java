@@ -11,19 +11,20 @@ public class MergeKLinkList {
     public static ListNode22 mergeKLists(List<ListNode22> lists) {
         if(lists==null||lists.size()==0)
             return null;
-
-        PriorityQueue<ListNode22> queue = new PriorityQueue<ListNode22>(new Comparator<ListNode22>(){
-            public int compare(ListNode22 l1, ListNode22 l2){
-                return l1.value - l2.value;
-            }
-        });
-
         ListNode22 head = new ListNode22(0);
+
         ListNode22 p = head;
 
+        PriorityQueue<ListNode22> queue = new PriorityQueue<>(new Comparator<ListNode22>() {
+            @Override
+            public int compare(ListNode22 o1, ListNode22 o2) {
+                return o1.value-o2.value;
+            }
+        });
         for(ListNode22 list: lists){
             if(list!=null)
                 queue.offer(list);
+
         }
 
         while(!queue.isEmpty()){
@@ -31,9 +32,11 @@ public class MergeKLinkList {
             p.next = n;
             p=p.next;
 
+            //this part is important.
             if(n.next!=null)
                 queue.offer(n.next);
         }
+
         return head.next;
     }
 

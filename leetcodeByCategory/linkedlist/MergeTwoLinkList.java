@@ -12,6 +12,7 @@ public class MergeTwoLinkList {
 
         Node root = new Node();
         Node pointer = root;
+
         while (head1 != null && head2 != null) {
             if(head1.value< head2.value){
                 pointer.next = head1;

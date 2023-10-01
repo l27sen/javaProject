@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
+ *
+ * 思路： 用 comparator 比较
  * Example 1:
  *
  * Input: nums = [10,2]

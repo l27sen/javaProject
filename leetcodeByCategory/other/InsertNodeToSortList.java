@@ -21,6 +21,7 @@ public class InsertNodeToSortList {
       current = addNode;
     } else {
       Node pre = head;
+      //use pre.next here
       while (pre.next != null && pre.next.data < addNode.data) {
         pre = pre.next;
       }

@@ -28,6 +28,7 @@ public class MajorityElement {
         int count =0;
 
         //if count is 0, change to current num, because majority num is more, it the num is the res
+        //如果当前结果不相等，就  --， 否则 相等就++
         for(int num: nums){
             if(count ==0 ){
                 res =num;

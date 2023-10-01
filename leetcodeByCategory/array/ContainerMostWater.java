@@ -8,20 +8,20 @@ package leetcodeByCategory.array;
  */
 public class ContainerMostWater {
 
-  public int maxAreaWater(int[] height) {
-    int result = 0;
-    int l = 0, r = height.length - 1;
-    while (l < r) {
-      result = Math.max(result, (r - l) * Math.min(height[r], height[l]));
+    public int maxAreaWater(int[] height) {
+        int result = 0;
+        int l = 0, r = height.length - 1;
+        while (l < r) {
+            result = Math.max(result, (r - l) * Math.min(height[r], height[l]));
 
-      //比较高度
-      if (height[l] < height[r]) {
-        l++;
-      } else {
-        r--;
-      }
+            //比较高度
+            if (height[l] < height[r]) {
+                l++;
+            } else {
+                r--;
+            }
 
+        }
+        return result;
     }
-    return result;
-  }
 }

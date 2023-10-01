@@ -23,6 +23,7 @@ public class TappingRainWater {
         int leftMax = 0;
         int rightMax = 0;
 
+        //两个指针左右移动，来找 Min （L，R）
         while (left < right) {
             //add water in left side
             if (height[left] < height[right]) {

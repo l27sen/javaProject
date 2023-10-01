@@ -7,16 +7,18 @@ import java.util.Set;
  * [100, 4, 200, 1, 3, 2], the longest consecutive elements sequence should be [1, 2, 3, 4]. Its
  * length is 4.
  *
- * 思路： 用 set 存起来，然后比较 o(N)
+ * Time complexity : O(n)O(n)O(n)
+ *
+ * 思路： 用 set 存起来，然后比较 o(N)，比较数字周围的value 是否被包含，然后删掉set里面的value
  */
 public class LongestConsecutiveArray {
 
   public static void main(String[] a) {
     int[] nums = {100, 4, 200, 1, 3, 2};
-    System.out.println(longestConsecutiveCount(nums));
+    System.out.println(longestConsecutive(nums));
   }
 
-  //leetcode sulution
+  //leetcode solution
 
   public static int longestConsecutiveCount(int[] nums) {
     Set<Integer> num_set = new HashSet<Integer>();

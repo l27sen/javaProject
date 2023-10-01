@@ -6,16 +6,16 @@ package leetcodeByCategory.array;
  */
 public class AppearanceNumInSortArray {
 
-    public static void main(String[] args){
-        int[] a = {1,2,3,3,3,4,5};
-        System.out.println(getFirstValue(a,3,0,7));
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3, 3, 3, 4, 5};
+        System.out.println(getFirstValue(a, 3, 0, 7));
     }
 
-    private static int getFirst(int[] data, int inputNum, int start, int end){
-        if(data ==null ||start>end){
+    private static int getFirst(int[] data, int inputNum, int start, int end) {
+        if (data == null || start > end) {
             return -1;
         }
-        int mid = (start+end)/2;
+        int mid = (start + end) / 2;
 
         if (data[mid] == inputNum) {
             if (mid > 0 && data[mid - 1] != inputNum || mid == 0) {
@@ -34,21 +34,21 @@ public class AppearanceNumInSortArray {
     }
 
 
-    public static int getFirstValue(int arr[],int key, int first, int last ){
-        int mid = (first + last)/2;
-        while( first <= last ){
-            if ( arr[mid] < key ){
+    public static int getFirstValue(int arr[], int key, int first, int last) {
+        int mid = (first + last) / 2;
+        while (first <= last) {
+            if (arr[mid] < key) {
                 first = mid + 1;
-            }else if ( arr[mid] == key ){
+            } else if (arr[mid] == key) {
                 if (mid > 0 && arr[mid - 1] != key || mid == 0) {
                     return mid;
                 } else {
                     last = mid - 1;
                 }
-            }else{
+            } else {
                 last = mid - 1;
             }
-            mid = (first + last)/2;
+            mid = (first + last) / 2;
         }
         return -1;
     }

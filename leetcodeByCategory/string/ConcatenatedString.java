@@ -32,6 +32,7 @@ public class ConcatenatedString {
         queue.addAll(Arrays.asList(values));
 
         int result = 0;
+
         while (!queue.isEmpty()) {
 
             String current = queue.poll();

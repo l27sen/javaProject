@@ -6,9 +6,16 @@ import java.util.Map;
 /**
  * remove always remove head,
  * add to the end.
+ *
+ * The key at the front of the queue is the least recently used key,
+ * and the key at the back of the queue is the most recently used key
+ *
+ *  * Time complexity: O(1)O(1)O(1)
+ *  * Space complexity: O(capacity)
  */
 public class LRUCache {
 
+    //double linked list
     static class Node{
         Node(String key, String value){
             this.value = value;
@@ -49,6 +56,7 @@ public class LRUCache {
 
 
     //remove node, 3 cases.
+    // endcase, head case, or middle case.
     private String removeNode(Node node){
         if(node == end){
             end = end.pre;
@@ -61,7 +69,8 @@ public class LRUCache {
         return node.key;
     }
 
-    //if notexist, add, or else, refresh
+    //1) > limit, then removehead,
+     //2) put, exist, refresh, not exist, then addNode.
     public void put(String key, String value) {
         Node node = hashMap.get(key);
         if (node == null) {

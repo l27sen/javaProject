@@ -1,5 +1,7 @@
 package leetcodeByCategory.tree;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 
 public class MaxLenthTree {
@@ -27,15 +29,39 @@ public class MaxLenthTree {
     }
 
 
+    // time complexity is O(N)
     public static int dfsLength(TreeNode root){
 
+        if (root == null) {
+            return 0;
+        } else {
+            int left_height = dfsLength(root.left);
+            int right_height = dfsLength(root.right);
+            return java.lang.Math.max(left_height, right_height) + 1;
+        }
+
+
+    }
+
+    //BFS way
+
+    public int maxDepth(TreeNode root) {
         if (root == null) return 0;
-        int leftDepth = dfsLength(root.left);
-        int rightDepth = dfsLength(root.right);
-        int bigger = Math.max(leftDepth, rightDepth);
-        return bigger+1;
+        Deque<TreeNode> dq = new ArrayDeque<>();
+        int depth = 0, next = 0;
+        TreeNode cur;
+        dq.offer(root);
 
-
+        while (!dq.isEmpty()) {
+            depth++;
+            next = dq.size();
+            for (int i = 0; i < next; ++i) {
+                cur = dq.poll();
+                if (cur.left != null) dq.offer(cur.left);
+                if (cur.right != null) dq.offer(cur.right);
+            }
+        }
+        return depth;
     }
 }
 

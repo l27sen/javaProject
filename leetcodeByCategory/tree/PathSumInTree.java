@@ -3,6 +3,11 @@ package leetcodeByCategory.tree;
 import java.util.LinkedList;
 import java.util.List;
 
+//https://leetcode.com/problems/path-sum/description/
+
+/**
+ *
+ */
 public class PathSumInTree {
 
   public static void main(String[] a) {
@@ -27,6 +32,16 @@ public class PathSumInTree {
 
   }
 
+
+  public boolean hasPathSum(TreeNode root, int sum) {
+    if (root == null)
+      return false;
+
+    sum -= root.val;
+    if ((root.left == null) && (root.right == null))
+      return (sum == 0);
+    return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
+  }
 
   public static boolean hashPathSum(TreeNode root, int sum) {
     List<TreeNode> list = new LinkedList<>();

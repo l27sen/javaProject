@@ -26,6 +26,7 @@ public class MaxValueOfGift {
         Node nodeCur = null;
         //图的遍历，把所有结点加进去 ，再求和
         //while 条件是一般走，直到最数组的最下边
+
         while (queue.peek().row != maxRowIndex || queue.peek().col != maxColIndex) {
             nodeCur = queue.poll();
             if (nodeCur.row != maxRowIndex) {

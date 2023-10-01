@@ -7,12 +7,12 @@ package leetcodeByCategory.array;
  *  4 5 6
  *  7 8 9
  *
- *  first step , go to this:
+ *  first step , go to this: 对角线
  *  1 4 7
  *  2 5 8
  *  3 6 9
  *
- *  then , go to
+ *  then , go to， column 互换
  *  7 4 1
  *  8 5 2
  *  9 6 3

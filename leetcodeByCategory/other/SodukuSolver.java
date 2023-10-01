@@ -27,6 +27,7 @@ public class SodukuSolver {
     }
 
     //check valid logic from ValidSoduco
+    //index is     int idx = (row / n ) * n + col / n;
     private boolean isValid(char[][] board, int row, int col, char c) {
         for (int i = 0; i < 9; i++) {
             if (board[i][col] != '.' && board[i][col] == c) {

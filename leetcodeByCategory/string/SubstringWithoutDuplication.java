@@ -1,6 +1,8 @@
 package leetcodeByCategory.string;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -44,6 +46,33 @@ public class SubstringWithoutDuplication {
         }
         if (end - start > count) count = end - start;
         return count;
+    }
+
+
+    public int lengthOfLongestSubstring(String s) {
+
+        int[] chars = new int[128];
+        int left = 0;
+        int right = 0;
+
+        int res = 0;
+        while (right < s.length()) {
+            char r = s.charAt(right);
+            chars[r]++;
+
+
+            //make the windlow get small.
+            while (chars[r] > 1) {
+                char l = s.charAt(left);
+                chars[l]--;
+                left++;
+            }
+
+            res = Math.max(res, right - left + 1);
+
+            right++;
+        }
+        return res;
     }
 
     public static void main(String a[]) {

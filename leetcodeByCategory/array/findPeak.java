@@ -22,6 +22,7 @@ public class findPeak {
 
     public static int findPeakElement(int[] nums) {
         int l = 0, r = nums.length - 1;
+        //l<=r, find the mid
         while (l <= r) {
             int mid = (l + r) / 2;
             if (nums[mid] > nums[mid + 1])
