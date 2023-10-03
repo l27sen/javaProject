@@ -1,5 +1,6 @@
 package leetcodeByCategory.graphic;
 
+//O(M×N)
 public class Islands {
 
   static final int ROW = 5, COL = 5;

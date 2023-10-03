@@ -2,31 +2,39 @@ package leetcodeByCategory.jacob;
 
 import java.util.Stack;
 
+//use pair data
 public class MinStack {
 
-    Stack<Integer> stack;
-    int min;
 
-    public MinStack(Stack<Integer> stack, int min){
-        this.stack = stack;
-        this.min = min;
+    private Stack<int[]> stack = new Stack<>();
+
+    public MinStack() { }
+
+    public void push(int x) {
+
+        /* If the stack is empty, then the min value
+         * must just be the first value we add. */
+        if (stack.isEmpty()) {
+            stack.push(new int[]{x, x});
+            return;
+        }
+
+        int currentMin = stack.peek()[1];
+        stack.push(new int[]{x, Math.min(x, currentMin)});
     }
 
 
-
-    public void push(int value){
-
-        if(value<=min){
-            stack.push(min);
-            min = value;
-        }
-        stack.push(value);
-
+    public void pop() {
+        stack.pop();
     }
 
-    public void pop(){
-        if(stack.pop() == min){
-            min = stack.pop();
-        }
+
+    public int top() {
+        return stack.peek()[0];
+    }
+
+
+    public int getMin() {
+        return stack.peek()[1];
     }
 }

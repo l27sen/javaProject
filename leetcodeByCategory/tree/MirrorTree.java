@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class MirrorTree {
 
-    //Time complexity : O(N)O(N)O(N),
+    //Time complexity : O(N) ,
     public boolean isSameTree(TreeNode p, TreeNode q) {
         // p and q are both null
         if (p == null && q == null) return true;
