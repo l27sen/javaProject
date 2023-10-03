@@ -24,6 +24,8 @@ public class PringTreeByLevel {
         }
     }
 
+    //Time complexity : O(N) since each node is processed
+    //exactly once
     //add to result by level
     public static List<List<Integer>> print(BinaryTreeNode root ) {
         List<List<Integer>> resultList = new ArrayList<>();
@@ -41,6 +43,46 @@ public class PringTreeByLevel {
             for (int i = 0; i <size ; i++) {
                 BinaryTreeNode current = ((LinkedList<BinaryTreeNode>) queue).poll();
                 currentList.add(current.val);
+                if (current.left != null) {
+                    queue.add(current.left);
+                }
+                if (current.right != null) {
+                    queue.add(current.right);
+                }
+
+            }
+
+            resultList.add(currentList);
+
+        }
+        return resultList;
+    }
+
+
+    //https://leetcode.com/problems/populating-next-right-pointers-in-each-node/editorial/
+
+
+    public static List<List<Integer>> connectEachLevel(BinaryTreeNode root ) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        if (root == null) {
+            return null;
+        }
+        List<BinaryTreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+
+        while (!queue.isEmpty()) {
+            List<Integer> currentList = new ArrayList<>();
+            int size = queue.size();
+            //get current level data.
+            for (int i = 0; i <size ; i++) {
+                BinaryTreeNode current = ((LinkedList<BinaryTreeNode>) queue).poll();
+                currentList.add(current.val);
+
+                if (i < size - 1) {
+                    //connect each
+               //     current.next = queue.peek();
+                }
                 if (current.left != null) {
                     queue.add(current.left);
                 }

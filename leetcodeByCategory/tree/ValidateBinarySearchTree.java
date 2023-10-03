@@ -11,6 +11,8 @@ public class ValidateBinarySearchTree {
   /**
    * All values on the left sub tree must be less than parent and parent's parent, and all values on
    * the right sub tree must be greater than parent and parent's parent
+   *
+   * O(N) since we visit each node exactly once
    */
   public boolean isValidBST(TreeNode p, double min, double max) {
     if (p == null) {

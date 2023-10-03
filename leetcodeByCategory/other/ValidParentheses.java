@@ -5,11 +5,15 @@ import java.util.Stack;
 
 /**
  * Input: s = "()[]{}" Output: true 办法：左边括号一直加到stack里面，右边的就取出来比较
+ *
+ * O（N）
+ *
  */
 public class ValidParentheses {
 
   public boolean valid(String s) {
     HashMap<Character, Character> map = new HashMap<Character, Character>();
+    //key is left, value is right
     map.put('(', ')');
     map.put('[', ']');
     map.put('{', '}');

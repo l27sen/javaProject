@@ -9,6 +9,8 @@ package leetcodeByCategory.jacob;
  * Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
  * Output: 7
  * Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+ *
+ * O(mn)
  */
 public class MinimumPathSum {
 
@@ -17,7 +19,7 @@ public class MinimumPathSum {
         int col = grid[0].length;
         int row = grid.length;
 
-        //hang
+        //hang， i star from 1
         for (int i = 1; i < col; i++) {
             grid[0][i]+=grid[0][i-1];
         }

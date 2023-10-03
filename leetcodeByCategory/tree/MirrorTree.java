@@ -6,6 +6,17 @@ import java.util.Queue;
 
 public class MirrorTree {
 
+    //Time complexity : O(N)O(N)O(N),
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        // p and q are both null
+        if (p == null && q == null) return true;
+        // one of p and q is null
+        if (q == null || p == null) return false;
+        if (p.val != q.val) return false;
+        return isSameTree(p.right, q.right) &&
+                isSameTree(p.left, q.left);
+    }
+
     public static void mirror(BinaryTreeNode root)
     {
         if(root ==null){
@@ -46,6 +57,9 @@ public class MirrorTree {
         // if both trees are empty, then they are mirror image
         if (node1 == null && node2 == null)
             return true;
+
+        if (node1 == null || node1 == null) return false;
+
 
         // For two trees to be mirror images, the following
         // three conditions must be true

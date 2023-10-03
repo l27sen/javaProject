@@ -7,6 +7,8 @@ package leetcodeByCategory.jacob;
  * <p>
  * Input: str = “Geeks”
  * Output: “ee”
+ *
+ * time: O(n2).
  */
 public class LongestPalindromicSubString {
 
@@ -14,6 +16,7 @@ public class LongestPalindromicSubString {
     int begin = 0;
     int maxLength = 0;
 
+    //Expand From Centers
     public String longest(String s) {
 
         for (int i = 0; i < s.length(); i++) {

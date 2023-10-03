@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
+//O(Nlogk)
 public class MergeKLinkList {
 
 
@@ -32,7 +33,7 @@ public class MergeKLinkList {
             p.next = n;
             p=p.next;
 
-            //this part is important.
+            //this part is important. because in the beginning only the first is added to queeu.
             if(n.next!=null)
                 queue.offer(n.next);
         }
